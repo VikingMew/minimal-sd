@@ -1,12 +1,9 @@
-import time
-
 import torch
 
 import modules.txt2img
 
 
 def main():
-    startup_timer = timer.Timer()
     # load all models
     txt2img(
         "task(1)",
