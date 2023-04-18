@@ -1,2 +1,16 @@
 einops
 lark
+piexif
+fonts
+font-roboto
+opencv-python
+blendmodes
+timm # ==0.4.12
+pytorch_lightning #==1.7.7
+omegaconf
+scikit-image
+kornia
+transfomers
+open-clip-torch
+safetensors
+tensorboard
