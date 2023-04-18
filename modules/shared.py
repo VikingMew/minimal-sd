@@ -629,7 +629,7 @@ options_templates.update(
             "img2img_background_color": OptionInfo(
                 "#ffffff",
                 "With img2img, fill image's transparent parts with this color.",
-                ui_components.FormColorPicker,
+                None,
                 {},
             ),
             "enable_quantization": OptionInfo(
