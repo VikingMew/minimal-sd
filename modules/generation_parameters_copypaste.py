@@ -404,6 +404,8 @@ def create_override_settings_dict(text_pairs):
     res = {}
 
     params = {}
+    if text_pairs is None or len(text_pairs) == 0:
+        return res
     for pair in text_pairs:
         k, v = pair.split(":", maxsplit=1)
 
