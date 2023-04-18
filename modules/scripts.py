@@ -447,6 +447,7 @@ class ScriptRunner:
 
         return inputs
 
+    @shared.debug_log
     def run(self, p, *args):
         script_index = args[0]
 

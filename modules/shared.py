@@ -35,6 +35,28 @@ from modules.paths_internal import (
 )
 
 demo = None
+from functools import wraps
+
+DEBUG = True
+
+
+def debug_log(function):
+    @wraps(function)
+    def wrapper(*args, **kwargs):
+        if DEBUG:
+            print(
+                ">> Called",
+                function.__name__,
+                "\n",
+                {**dict(zip(function.__code__.co_varnames, args)), **kwargs},
+            )
+        result = function(*args, **kwargs)
+        if DEBUG:
+            print(">>", function.__name__, "return:\n", result)
+        return result
+
+    return wrapper
+
 
 parser = cmd_args.parser
 
