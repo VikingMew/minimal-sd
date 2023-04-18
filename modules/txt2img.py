@@ -122,15 +122,15 @@ def txt2img(
     if cmd_opts.enable_console_prompts:
         print(f"\ntxt2img: {prompt}", file=shared.progress_print_out)
 
-"""
-{'self': <modules.scripts.ScriptRunner object at 0x7f84557a1390>,
- 'p': <modules.processing.StableDiffusionProcessingTxt2Img object at 0x7f8444bbc790>, 
- 'args': 0, 
- 'script_index': <scripts.external_code.ControlNetUnit object at 0x7f844492cdd0>,
-  'script': False, 
-  'script_args': False,
-   'processed': 'positive'}            
-"""
+    """
+    {'self': <modules.scripts.ScriptRunner object at 0x7f84557a1390>,
+     'p': <modules.processing.StableDiffusionProcessingTxt2Img object at 0x7f8444bbc790>, 
+     'args': 0, 
+     'script_index': <scripts.external_code.ControlNetUnit object at 0x7f844492cdd0>,
+      'script': False, 
+      'script_args': False,
+       'processed': 'positive'}            
+    """
 
     processed = modules.scripts.scripts_txt2img.run(p, *args)
 
