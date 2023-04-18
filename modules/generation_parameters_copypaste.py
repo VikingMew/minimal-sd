@@ -17,7 +17,7 @@ re_param_code = r'\s*([\w ]+):\s*("(?:\\"[^,]|\\"|\\|[^\"])+"|[^,]*)(?:,|$)'
 re_param = re.compile(re_param_code)
 re_imagesize = re.compile(r"^(\d+)x(\d+)$")
 re_hypernet_hash = re.compile("\(([0-9a-f]+)\)$")
-type_of_gr_update = type(gr.update())
+# type_of_gr_update = type(gr.update())
 
 paste_fields = {}
 registered_param_bindings = []
