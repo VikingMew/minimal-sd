@@ -11,7 +11,8 @@ from PIL import Image
 
 import modules.devices as devices
 import modules.interrogate
-import modules.memmon
+
+# import modules.memmon
 import modules.styles
 from modules import (
     cmd_args,
@@ -1184,9 +1185,9 @@ class Options:
         return value
 
 
-opts = Options()
-if os.path.exists(config_filename):
-    opts.load(config_filename)
+# opts = Options()
+# if os.path.exists(config_filename):
+#     opts.load(config_filename)
 
 settings_components = None
 """assinged from ui.py, a mapping on setting anmes to gradio components repsponsible for those settings"""
@@ -1210,43 +1211,43 @@ clip_model = None
 progress_print_out = sys.stdout
 
 
-class TotalTQDM:
-    def __init__(self):
-        self._tqdm = None
+# class TotalTQDM:
+#     def __init__(self):
+#         self._tqdm = None
 
-    def reset(self):
-        self._tqdm = tqdm.tqdm(
-            desc="Total progress",
-            total=state.job_count * state.sampling_steps,
-            position=1,
-            file=progress_print_out,
-        )
+#     def reset(self):
+#         self._tqdm = tqdm.tqdm(
+#             desc="Total progress",
+#             total=state.job_count * state.sampling_steps,
+#             position=1,
+#             file=progress_print_out,
+#         )
 
-    def update(self):
-        if not opts.multiple_tqdm or cmd_opts.disable_console_progressbars:
-            return
-        if self._tqdm is None:
-            self.reset()
-        self._tqdm.update()
+#     def update(self):
+#         if not opts.multiple_tqdm or cmd_opts.disable_console_progressbars:
+#             return
+#         if self._tqdm is None:
+#             self.reset()
+#         self._tqdm.update()
 
-    def updateTotal(self, new_total):
-        if not opts.multiple_tqdm or cmd_opts.disable_console_progressbars:
-            return
-        if self._tqdm is None:
-            self.reset()
-        self._tqdm.total = new_total
+#     def updateTotal(self, new_total):
+#         if not opts.multiple_tqdm or cmd_opts.disable_console_progressbars:
+#             return
+#         if self._tqdm is None:
+#             self.reset()
+#         self._tqdm.total = new_total
 
-    def clear(self):
-        if self._tqdm is not None:
-            self._tqdm.refresh()
-            self._tqdm.close()
-            self._tqdm = None
+#     def clear(self):
+#         if self._tqdm is not None:
+#             self._tqdm.refresh()
+#             self._tqdm.close()
+#             self._tqdm = None
 
 
-total_tqdm = TotalTQDM()
+# total_tqdm = TotalTQDM()
 
-mem_mon = modules.memmon.MemUsageMonitor("MemMon", device, opts)
-mem_mon.start()
+# mem_mon = modules.memmon.MemUsageMonitor("MemMon", device, opts)
+# mem_mon.start()
 
 
 def listfiles(dirname):
