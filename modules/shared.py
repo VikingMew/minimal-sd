@@ -1023,7 +1023,7 @@ tab_names = []
 
 class Options:
     data = None
-    data_labels = options_templates
+    # data_labels = options_templates
     typemap = {int: float}
 
     def __init__(self):
