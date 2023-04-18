@@ -7,7 +7,7 @@ import re
 import tempfile
 from pathlib import Path
 
-import gradio as gr
+# import gradio as gr
 from PIL import Image
 
 from modules import script_callbacks, shared, ui_tempdir

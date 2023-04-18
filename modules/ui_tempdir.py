@@ -3,7 +3,7 @@ import tempfile
 from collections import namedtuple
 from pathlib import Path
 
-import gradio as gr
+# import gradio as gr
 from PIL import PngImagePlugin
 
 from modules import shared
@@ -60,7 +60,7 @@ def save_pil_to_file(pil_image, dir=None):
 
 
 # override save to file function so that it also writes PNG info
-gr.processing_utils.save_pil_to_file = save_pil_to_file
+# gr.processing_utils.save_pil_to_file = save_pil_to_file
 
 
 def on_tmpdir_changed():
