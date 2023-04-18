@@ -79,14 +79,15 @@ def txt2img(
     *args,
 ):
     override_settings = create_override_settings_dict(override_settings_texts)
-"""
-'outpath_samples': 'outputs/txt2img-images', 'outpath_grids': 'outputs/txt2img-grids', 'prompt': 'realistic_portrait_female, (white background:1.5), black hair, double ponytails, (ponytail front of clothes:1.5)', 'styles': [], 'negative_prompt': 'EasyNegative, (deformed pupils, deformed eyes, dismembered face, 3d, sketch, cartoon, anime:1.4), (light and shadow:1.2), worst quality, out of frame, morbid, (pale skin:1.3), (bangs:1.3), (beard), mutilated, (hands, arms,legs), extra limbs, long neck, signature, watermark, name,', 'seed': 782874815.0, 'subseed': -1.0, 'subseed_strength': 0, 'seed_resize_from_h': 0, 'seed_resize_from_w': 0, 'seed_enable_extras': False, 'sampler_name': 'DPM++ SDE Karras', 'batch_size': 1, 'n_iter': 1, 'steps': 30, 'cfg_scale': 7, 'width': 512, 'height': 512, 'restore_faces': True, 'tiling': False, 'enable_hr': False, 'denoising_strength': None, 'hr_scale': 2, 'hr_upscaler': 'Latent', 'hr_second_pass_steps': 0, 'hr_resize_x': 0, 'hr_resize_y': 0, 'override_settings': {}}
+    """
+    'outpath_samples': 'outputs/txt2img-images', 'outpath_grids': 'outputs/txt2img-grids', 'prompt': 'realistic_portrait_female, (white background:1.5), black hair, double ponytails, (ponytail front of clothes:1.5)', 'styles': [], 'negative_prompt': 'EasyNegative, (deformed pupils, deformed eyes, dismembered face, 3d, sketch, cartoon, anime:1.4), (light and shadow:1.2), worst quality, out of frame, morbid, (pale skin:1.3), (bangs:1.3), (beard), mutilated, (hands, arms,legs), extra limbs, long neck, signature, watermark, name,', 'seed': 782874815.0, 'subseed': -1.0, 'subseed_strength': 0, 'seed_resize_from_h': 0, 'seed_resize_from_w': 0, 'seed_enable_extras': False, 'sampler_name': 'DPM++ SDE Karras', 'batch_size': 1, 'n_iter': 1, 'steps': 30, 'cfg_scale': 7, 'width': 512, 'height': 512, 'restore_faces': True, 'tiling': False, 'enable_hr': False, 'denoising_strength': None, 'hr_scale': 2, 'hr_upscaler': 'Latent', 'hr_second_pass_steps': 0, 'hr_resize_x': 0, 'hr_resize_y': 0, 'override_settings': {}}
 
 
-"""
+    """
     p = StableDiffusionProcessingTxt2Img(
         sd_model=shared.sd_model,  # print model shape here
-        outpath_samples=opts.outdir_samples or opts.outdir_txt2img_samples, #outputs/txt2img-images
+        outpath_samples=opts.outdir_samples
+        or opts.outdir_txt2img_samples,  # outputs/txt2img-images
         outpath_grids=opts.outdir_grids or opts.outdir_txt2img_grids,
         prompt=prompt,
         styles=prompt_styles,
@@ -108,8 +109,8 @@ def txt2img(
         tiling=tiling,
         enable_hr=enable_hr,
         denoising_strength=denoising_strength if enable_hr else None,
-        hr_scale=hr_scale, #2
-        hr_upscaler=hr_upscaler, 
+        hr_scale=hr_scale,  # 2
+        hr_upscaler=hr_upscaler,
         hr_second_pass_steps=hr_second_pass_steps,
         hr_resize_x=hr_resize_x,
         hr_resize_y=hr_resize_y,
