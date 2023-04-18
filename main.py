@@ -33,7 +33,32 @@ def main():
         0,
         0,
         [],
-        # "overrides"
+        args=(
+            0,
+            "<scripts.external_code.ControlNetUnit object at 0x7f27c8e3ff10>",
+            False,
+            False,
+            "positive",
+            "comma",
+            0,
+            False,
+            False,
+            "",
+            1,
+            "",
+            0,
+            "",
+            0,
+            "",
+            True,
+            False,
+            False,
+            False,
+            0,
+            None,
+            False,
+            50,
+        ),
     )
 
 

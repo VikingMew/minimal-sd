@@ -76,7 +76,7 @@ def txt2img(
     hr_resize_x: int,
     hr_resize_y: int,
     override_settings_texts,
-    *args,
+    args,
 ):
     override_settings = create_override_settings_dict(override_settings_texts)
     """
@@ -116,7 +116,7 @@ def txt2img(
         hr_resize_y=hr_resize_y,
         override_settings=override_settings,
     )
-
+    "args: (0, <scripts.external_code.ControlNetUnit object at 0x7f27c8e3ff10>, False, False, 'positive', 'comma', 0, False, False, '', 1, '', 0, '', 0, '', True, False, False, False, 0, None, False, 50)"
     p.scripts = modules.scripts.scripts_txt2img
     p.script_args = args
 
