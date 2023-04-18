@@ -29,7 +29,7 @@ from modules import (
     devices,
     extra_networks,
     generation_parameters_copypaste,
-    lowvram,
+    # lowvram,
     masking,
     prompt_parser,
     script_callbacks,
@@ -928,8 +928,8 @@ def process_images_inner(p: StableDiffusionProcessing) -> Processed:
 
             del samples_ddim
 
-            if shared.cmd_opts.lowvram or shared.cmd_opts.medvram:
-                lowvram.send_everything_to_cpu()
+            # if shared.cmd_opts.lowvram or shared.cmd_opts.medvram:
+            #     lowvram.send_everything_to_cpu()
 
             devices.torch_gc()
 
