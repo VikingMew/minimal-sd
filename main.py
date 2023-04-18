@@ -32,7 +32,7 @@ def main():
         0,
         0,
         0,
-        {"text_pairs": []},
+        [],
         # "overrides"
     )
 
