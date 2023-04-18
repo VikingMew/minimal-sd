@@ -1,0 +1,1 @@
+* git clone  https://github.com/Stability-AI/stablediffusion.git ./repositories/stable-diffusion-stability-ai/

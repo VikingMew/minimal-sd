@@ -19,7 +19,7 @@ from modules import (
     localization,
     script_loading,
     shared_items,
-    ui_components,
+    # ui_components,
 )
 from modules.paths_internal import (
     data_path,
