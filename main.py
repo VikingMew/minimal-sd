@@ -34,7 +34,6 @@ def main():
         0,
         None,
         # "overrides"
-        *args,
     )
 
 
