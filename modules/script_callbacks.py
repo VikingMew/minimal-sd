@@ -4,8 +4,8 @@ import traceback
 from collections import namedtuple
 from typing import Any, Dict, Optional
 
-from fastapi import FastAPI
-from gradio import Blocks
+# from fastapi import FastAPI
+# from gradio import Blocks
 
 
 def report_exception(c, job):
@@ -110,12 +110,12 @@ def clear_callbacks():
         callback_list.clear()
 
 
-def app_started_callback(demo: Optional[Blocks], app: FastAPI):
-    for c in callback_map["callbacks_app_started"]:
-        try:
-            c.callback(demo, app)
-        except Exception:
-            report_exception(c, "app_started_callback")
+# def app_started_callback(demo: Optional[Blocks], app: FastAPI):
+#     for c in callback_map["callbacks_app_started"]:
+#         try:
+#             c.callback(demo, app)
+#         except Exception:
+#             report_exception(c, "app_started_callback")
 
 
 def model_loaded_callback(sd_model):
