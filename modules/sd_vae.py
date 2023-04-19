@@ -145,7 +145,7 @@ def load_vae(model, vae_file=None, vae_source="from unknown source"):
     # save_settings = False
 
     cache_enabled = shared.opts.sd_vae_checkpoint_cache > 0
-
+    print("load vae", vae_file)
     if vae_file:
         if cache_enabled and vae_file in checkpoints_loaded:
             # use vae checkpoint cache
