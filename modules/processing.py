@@ -827,12 +827,12 @@ def process_images_inner(p: StableDiffusionProcessing) -> Processed:
         with devices.autocast():
             p.init(p.all_prompts, p.all_seeds, p.all_subseeds)
 
-            # for OSX, loading the model during sampling changes the generated picture, so it is loaded here
-            if (
-                shared.opts.live_previews_enable
-                and opts.show_progress_type == "Approx NN"
-            ):
-                sd_vae_approx.model()
+            # # for OSX, loading the model during sampling changes the generated picture, so it is loaded here
+            # if (
+            #     shared.opts.live_previews_enable
+            #     and opts.show_progress_type == "Approx NN"
+            # ):
+            #     sd_vae_approx.model()
 
         if state.job_count == -1:
             state.job_count = p.n_iter
