@@ -18,7 +18,7 @@ from fonts.ttf import Roboto
 from PIL import Image, ImageDraw, ImageFont, PngImagePlugin
 
 from modules import errors, script_callbacks, sd_samplers, shared
-from modules.shared import cmd_opts  # , opts
+from modules.shared import cmd_opts, opts
 
 LANCZOS = Image.Resampling.LANCZOS if hasattr(Image, "Resampling") else Image.LANCZOS
 
