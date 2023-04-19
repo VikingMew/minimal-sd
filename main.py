@@ -5,7 +5,7 @@ import modules.txt2img
 
 def main():
     # load all models
-    modules.sdmodels.list_models()
+    modules.sd_models.list_models()
     modules.sd_models.load_model()
     # run
     modules.txt2img.txt2img(
