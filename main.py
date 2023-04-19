@@ -1,13 +1,15 @@
 import torch
 
 import modules.txt2img
+import modules.sd_models
+import modules.sd_vae
 
 
 def main():
     # load all models
     modules.sd_models.list_models()
-    modules.sd_models.load_model()
     modules.sd_vae.refresh_vae_list()
+    modules.sd_models.load_model()
     # run
     modules.txt2img.txt2img(
         "task(1)",
