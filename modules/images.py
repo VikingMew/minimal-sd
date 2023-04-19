@@ -796,7 +796,7 @@ def save_image(
         txt_fullfn = None
 
     script_callbacks.image_saved_callback(params)
-
+    print(fullfn, txt_fullfn)
     return fullfn, txt_fullfn
 
 
