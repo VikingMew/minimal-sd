@@ -5,6 +5,8 @@ import modules.txt2img
 
 def main():
     # load all models
+    modules.sd_models.load_model()
+    # run
     modules.txt2img.txt2img(
         "task(1)",
         "realistic_portrait_female, (white background:1.5), (high detail skin:1.2),, realistic_portrait_female, (white background:1.5), (high detail skin:1.2),",
@@ -33,7 +35,7 @@ def main():
         0,
         0,
         [],
-        args=(
+        args=(  # fuck
             0,
             "<scripts.external_code.ControlNetUnit object at 0x7f27c8e3ff10>",
             False,

@@ -695,7 +695,7 @@ def create_infotext(
 
 def process_images(p: StableDiffusionProcessing) -> Processed:
     stored_opts = {k: opts.data[k] for k in p.override_settings.keys()}
-
+    print("stored_opts", stored_opts)
     try:
         for k, v in p.override_settings.items():
             setattr(opts, k, v)
