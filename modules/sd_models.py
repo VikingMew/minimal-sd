@@ -484,7 +484,7 @@ def load_model(
     already_loaded_state_dict=None,
     time_taken_to_load_state_dict=None,
 ):
-    from modules import lowvram, sd_hijack
+    from modules import sd_hijack
 
     checkpoint_info = checkpoint_info or select_checkpoint()
 
@@ -541,10 +541,7 @@ def load_model(
 
     load_model_weights(sd_model, checkpoint_info, state_dict, timer)
 
-    if shared.cmd_opts.lowvram or shared.cmd_opts.medvram:
-        lowvram.setup_for_low_vram(sd_model, shared.cmd_opts.medvram)
-    else:
-        sd_model.to(shared.device)
+    sd_model.to(shared.device)
 
     timer.record("move model to device")
 
