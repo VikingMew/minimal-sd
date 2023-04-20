@@ -143,3 +143,4 @@ def list_extensions():
             is_builtin=is_builtin,
         )
         extensions.append(extension)
+    print(extensions)
