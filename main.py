@@ -3,10 +3,12 @@ import torch
 import modules.txt2img
 import modules.sd_models
 import modules.sd_vae
+import modules.extensions
 
 
 def main():
     # load all models
+    modules.extensions.list_extensions()
     modules.sd_models.list_models()
     modules.sd_vae.refresh_vae_list()
     modules.sd_models.load_model()

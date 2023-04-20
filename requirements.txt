@@ -19,3 +19,6 @@ torchdiffeq
 torchsde
 clean-fid
 resize-right
+mediapipe
+svglib
+fvcore
