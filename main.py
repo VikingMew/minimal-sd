@@ -10,7 +10,7 @@ import modules.extensions
 def main():
     # load all models
     modules.extensions.list_extensions()
-    modules.scripts.list_scripts()
+    modules.scripts.load_scripts()
     modules.sd_models.list_models()
     modules.sd_vae.refresh_vae_list()
     modules.sd_models.load_model()
