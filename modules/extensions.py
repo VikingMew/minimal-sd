@@ -110,6 +110,7 @@ def list_extensions():
     extensions.clear()
 
     if not os.path.isdir(extensions_dir):
+        print("extension_paths not found ")
         return
 
     if shared.opts.disable_all_extensions == "all":
@@ -143,4 +144,4 @@ def list_extensions():
             is_builtin=is_builtin,
         )
         extensions.append(extension)
-    print(extensions)
+    print("extensions", extensions)
