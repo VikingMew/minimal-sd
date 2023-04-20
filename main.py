@@ -8,10 +8,11 @@ import modules.extensions
 
 def main():
     # load all models
-    modules.extensions.list_extensions()
     modules.sd_models.list_models()
     modules.sd_vae.refresh_vae_list()
     modules.sd_models.load_model()
+    modules.extensions.list_extensions()
+
     # run
     modules.txt2img.txt2img(
         "task(1)",
