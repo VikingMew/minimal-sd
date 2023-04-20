@@ -123,7 +123,7 @@ def list_extensions():
         )
 
     extension_paths = []
-    for dirname in [extensions_dir, extensions_builtin_dir]:
+    for dirname in [extensions_dir]:
         if not os.path.isdir(dirname):
             print("extension_paths not dir ", dirname)
 
