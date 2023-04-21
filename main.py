@@ -94,7 +94,7 @@ def run_txt_img(positive, negative):
         False,
         50,
     )
-    [0][0]
+    [0][0][0]
 
 
 def main():
