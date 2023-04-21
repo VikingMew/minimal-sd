@@ -807,6 +807,10 @@ class Script(scripts.Script):
 
         return unit
 
+    def get_unit(*args):
+        unit = external_code.ControlNetUnit(*args)
+        return unit
+
     def ui(self, is_img2img):
         """this function should create gradio UI elements. See https://gradio.app/docs/#components
         The return value should be an array of all components that are used in processing.

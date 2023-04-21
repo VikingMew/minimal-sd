@@ -217,7 +217,6 @@ def list_scripts(scriptdirname, extension):
         for x in scripts_list
         if os.path.splitext(x.path)[1].lower() == extension and os.path.isfile(x.path)
     ]
-    print(scripts_list)
     return scripts_list
 
 
