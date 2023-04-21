@@ -2,15 +2,10 @@ import copy
 import sys
 from typing import Union
 
-import gradio as gr
 import numpy as np
 import pydantic
-from fastapi import Body, FastAPI
 from PIL import Image
 from scripts import external_code, global_state
-
-from modules.api import api
-from modules.api.models import *
 
 
 def encode_to_base64(image):
