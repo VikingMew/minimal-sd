@@ -1,4 +1,4 @@
-import gradio as gr
+# import gradio as gr
 
 
 class FormComponent:
@@ -6,7 +6,7 @@ class FormComponent:
         return gr.components.Form
 
 
-gr.Dropdown.get_expected_parent = FormComponent.get_expected_parent
+# gr.Dropdown.get_expected_parent = FormComponent.get_expected_parent
 
 
 class ToolButton(FormComponent, gr.Button):
