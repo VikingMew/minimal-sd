@@ -1,17 +1,15 @@
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
+from __future__ import absolute_import, division, print_function
 
 import argparse
 import time
-import torch
-import torch.nn as nn
-import torch.nn.parallel
 from contextlib import suppress
 
 import geffnet
+import torch
+import torch.nn as nn
+import torch.nn.parallel
 from data import Dataset, create_loader, resolve_data_config
-from utils import accuracy, AverageMeter
+from utils import AverageMeter, accuracy
 
 has_native_amp = False
 try:

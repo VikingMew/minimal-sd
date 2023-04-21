@@ -1,16 +1,25 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 import logging
 from typing import Callable, Dict, List, Optional, Tuple, Union
-import torch
-from torch import nn
-from torch.nn import functional as F
 
+import torch
 from annotator.oneformer.detectron2.config import configurable
 from annotator.oneformer.detectron2.data.detection_utils import get_fed_loss_cls_weights
-from annotator.oneformer.detectron2.layers import ShapeSpec, batched_nms, cat, cross_entropy, nonzero_tuple
-from annotator.oneformer.detectron2.modeling.box_regression import Box2BoxTransform, _dense_box_regression_loss
+from annotator.oneformer.detectron2.layers import (
+    ShapeSpec,
+    batched_nms,
+    cat,
+    cross_entropy,
+    nonzero_tuple,
+)
+from annotator.oneformer.detectron2.modeling.box_regression import (
+    Box2BoxTransform,
+    _dense_box_regression_loss,
+)
 from annotator.oneformer.detectron2.structures import Boxes, Instances
 from annotator.oneformer.detectron2.utils.events import get_event_storage
+from torch import nn
+from torch.nn import functional as F
 
 __all__ = ["fast_rcnn_inference", "FastRCNNOutputLayers"]
 

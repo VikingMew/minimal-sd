@@ -1,13 +1,13 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
-import numpy as np
 from typing import List
-import fvcore.nn.weight_init as weight_init
-import torch
-from torch import nn
 
+import fvcore.nn.weight_init as weight_init
+import numpy as np
+import torch
 from annotator.oneformer.detectron2.config import configurable
 from annotator.oneformer.detectron2.layers import Conv2d, ShapeSpec, get_norm
 from annotator.oneformer.detectron2.utils.registry import Registry
+from torch import nn
 
 __all__ = ["FastRCNNConvFCHead", "build_box_head", "ROI_BOX_HEAD_REGISTRY"]
 

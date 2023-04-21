@@ -5,11 +5,11 @@ import time
 from collections import OrderedDict, abc
 from contextlib import ExitStack, contextmanager
 from typing import List, Union
-import torch
-from torch import nn
 
+import torch
 from annotator.oneformer.detectron2.utils.comm import get_world_size, is_main_process
 from annotator.oneformer.detectron2.utils.logger import log_every_n_seconds
+from torch import nn
 
 
 class DatasetEvaluator:

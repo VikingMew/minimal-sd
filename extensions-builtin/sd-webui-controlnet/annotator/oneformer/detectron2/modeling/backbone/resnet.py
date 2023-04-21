@@ -1,10 +1,8 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
-import numpy as np
 import fvcore.nn.weight_init as weight_init
+import numpy as np
 import torch
 import torch.nn.functional as F
-from torch import nn
-
 from annotator.oneformer.detectron2.layers import (
     CNNBlockBase,
     Conv2d,
@@ -13,6 +11,7 @@ from annotator.oneformer.detectron2.layers import (
     ShapeSpec,
     get_norm,
 )
+from torch import nn
 
 from .backbone import Backbone
 from .build import BACKBONE_REGISTRY

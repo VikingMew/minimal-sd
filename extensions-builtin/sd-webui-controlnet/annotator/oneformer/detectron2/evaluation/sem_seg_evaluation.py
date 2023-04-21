@@ -2,17 +2,21 @@
 import itertools
 import json
 import logging
-import numpy as np
 import os
 from collections import OrderedDict
 from typing import Optional, Union
-import annotator.oneformer.pycocotools.mask as mask_util
-import torch
-from PIL import Image
 
+import annotator.oneformer.pycocotools.mask as mask_util
+import numpy as np
+import torch
 from annotator.oneformer.detectron2.data import DatasetCatalog, MetadataCatalog
-from annotator.oneformer.detectron2.utils.comm import all_gather, is_main_process, synchronize
+from annotator.oneformer.detectron2.utils.comm import (
+    all_gather,
+    is_main_process,
+    synchronize,
+)
 from annotator.oneformer.detectron2.utils.file_io import PathManager
+from PIL import Image
 
 from .evaluator import DatasetEvaluator
 

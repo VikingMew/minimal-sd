@@ -1,14 +1,14 @@
 # this scripts installs necessary requirements and launches main program in webui.py
-import subprocess
-import os
-import sys
 import importlib.util
-import shlex
-import platform
 import json
+import os
+import platform
+import shlex
+import subprocess
+import sys
 
 from modules import cmd_args
-from modules.paths_internal import script_path, extensions_dir
+from modules.paths_internal import extensions_dir, script_path
 
 commandline_args = os.environ.get("COMMANDLINE_ARGS", "")
 sys.argv += shlex.split(commandline_args)

@@ -12,6 +12,7 @@ except ImportError:
 
 from annotator.mmpkg.mmseg.models.builder import HEADS
 from annotator.mmpkg.mmseg.ops import resize
+
 from ..losses import accuracy
 from .cascade_decode_head import BaseCascadeDecodeHead
 

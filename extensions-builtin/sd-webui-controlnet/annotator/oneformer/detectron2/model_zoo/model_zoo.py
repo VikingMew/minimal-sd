@@ -1,11 +1,16 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 import os
 from typing import Optional
+
 import pkg_resources
 import torch
-
 from annotator.oneformer.detectron2.checkpoint import DetectionCheckpointer
-from annotator.oneformer.detectron2.config import CfgNode, LazyConfig, get_cfg, instantiate
+from annotator.oneformer.detectron2.config import (
+    CfgNode,
+    LazyConfig,
+    get_cfg,
+    instantiate,
+)
 from annotator.oneformer.detectron2.modeling import build_model
 
 

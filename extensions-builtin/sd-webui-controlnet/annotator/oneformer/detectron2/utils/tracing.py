@@ -1,6 +1,6 @@
 import inspect
-import torch
 
+import torch
 from annotator.oneformer.detectron2.utils.env import TORCH_VERSION
 
 try:

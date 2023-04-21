@@ -201,12 +201,13 @@ if __name__ == "__main__":
         "dataset_name" can be "coco_2017_train_panoptic", or other
         pre-registered ones
     """
+    import sys
+
+    import annotator.oneformer.detectron2.data.datasets  # noqa # add pre-defined metadata
+    import numpy as np
     from annotator.oneformer.detectron2.utils.logger import setup_logger
     from annotator.oneformer.detectron2.utils.visualizer import Visualizer
-    import annotator.oneformer.detectron2.data.datasets  # noqa # add pre-defined metadata
-    import sys
     from PIL import Image
-    import numpy as np
 
     logger = setup_logger(name=__name__)
     assert sys.argv[4] in DatasetCatalog.list()

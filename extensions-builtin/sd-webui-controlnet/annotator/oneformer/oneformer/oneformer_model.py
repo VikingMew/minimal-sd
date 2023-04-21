@@ -6,22 +6,31 @@
 from typing import Tuple
 
 import torch
+from annotator.oneformer.detectron2.config import configurable
+from annotator.oneformer.detectron2.data import MetadataCatalog
+from annotator.oneformer.detectron2.modeling import (
+    META_ARCH_REGISTRY,
+    build_backbone,
+    build_sem_seg_head,
+)
+from annotator.oneformer.detectron2.modeling.backbone import Backbone
+from annotator.oneformer.detectron2.modeling.postprocessing import sem_seg_postprocess
+from annotator.oneformer.detectron2.structures import (
+    BitMasks,
+    Boxes,
+    ImageList,
+    Instances,
+)
+from annotator.oneformer.detectron2.utils.memory import retry_if_cuda_oom
+from annotator.oneformer.oneformer.data.tokenizer import SimpleTokenizer, Tokenize
+from einops import rearrange
 from torch import nn
 from torch.nn import functional as F
 
-from annotator.oneformer.detectron2.config import configurable
-from annotator.oneformer.detectron2.data import MetadataCatalog
-from annotator.oneformer.detectron2.modeling import META_ARCH_REGISTRY, build_backbone, build_sem_seg_head
-from annotator.oneformer.detectron2.modeling.backbone import Backbone
-from annotator.oneformer.detectron2.modeling.postprocessing import sem_seg_postprocess
-from annotator.oneformer.detectron2.structures import Boxes, ImageList, Instances, BitMasks
-from annotator.oneformer.detectron2.utils.memory import retry_if_cuda_oom
-
 from .modeling.matcher import HungarianMatcher
-from einops import rearrange
-from .modeling.transformer_decoder.text_transformer import TextTransformer
 from .modeling.transformer_decoder.oneformer_transformer_decoder import MLP
-from annotator.oneformer.oneformer.data.tokenizer import SimpleTokenizer, Tokenize
+from .modeling.transformer_decoder.text_transformer import TextTransformer
+
 
 @META_ARCH_REGISTRY.register()
 class OneFormer(nn.Module):

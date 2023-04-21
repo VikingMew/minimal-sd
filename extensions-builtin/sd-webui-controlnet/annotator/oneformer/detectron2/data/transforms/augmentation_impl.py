@@ -3,11 +3,12 @@
 """
 Implement many useful :class:`Augmentation`.
 """
-import numpy as np
 import sys
-from numpy import random
 from typing import Tuple
+
+import numpy as np
 import torch
+from annotator.oneformer.detectron2.structures import Boxes, pairwise_iou
 from fvcore.transforms.transform import (
     BlendTransform,
     CropTransform,
@@ -18,9 +19,8 @@ from fvcore.transforms.transform import (
     TransformList,
     VFlipTransform,
 )
+from numpy import random
 from PIL import Image
-
-from annotator.oneformer.detectron2.structures import Boxes, pairwise_iou
 
 from .augmentation import Augmentation, _transform_to_aug
 from .transform import ExtentTransform, ResizeTransform, RotationTransform

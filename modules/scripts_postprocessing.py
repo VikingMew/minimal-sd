@@ -1,8 +1,9 @@
 import os
 
+from modules import errors, shared
+
 # import gradio as gr
 
-from modules import errors, shared
 
 
 class PostprocessedImage:

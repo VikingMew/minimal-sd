@@ -1,16 +1,18 @@
-import cv2
 import json
-import numpy as np
 import math
 import time
-from scipy.ndimage.filters import gaussian_filter
-import matplotlib.pyplot as plt
+
+import cv2
 import matplotlib
+import matplotlib.pyplot as plt
+import numpy as np
 import torch
+from scipy.ndimage.filters import gaussian_filter
 from skimage.measure import label
 
-from .model import handpose_model
 from . import util
+from .model import handpose_model
+
 
 class Hand(object):
     def __init__(self, model_path):

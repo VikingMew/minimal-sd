@@ -1,4 +1,5 @@
 from .cgnet import CGNet
+
 # from .fast_scnn import FastSCNN
 from .hrnet import HRNet
 from .mobilenet_v2 import MobileNetV2

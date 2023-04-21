@@ -5,14 +5,25 @@ from .ema import EMAHook
 from .evaluation import DistEvalHook, EvalHook
 from .hook import HOOKS, Hook
 from .iter_timer import IterTimerHook
-from .logger import (DvcliveLoggerHook, LoggerHook, MlflowLoggerHook,
-                     NeptuneLoggerHook, PaviLoggerHook, TensorboardLoggerHook,
-                     TextLoggerHook, WandbLoggerHook)
+from .logger import (
+    DvcliveLoggerHook,
+    LoggerHook,
+    MlflowLoggerHook,
+    NeptuneLoggerHook,
+    PaviLoggerHook,
+    TensorboardLoggerHook,
+    TextLoggerHook,
+    WandbLoggerHook,
+)
 from .lr_updater import LrUpdaterHook
 from .memory import EmptyCacheHook
 from .momentum_updater import MomentumUpdaterHook
-from .optimizer import (Fp16OptimizerHook, GradientCumulativeFp16OptimizerHook,
-                        GradientCumulativeOptimizerHook, OptimizerHook)
+from .optimizer import (
+    Fp16OptimizerHook,
+    GradientCumulativeFp16OptimizerHook,
+    GradientCumulativeOptimizerHook,
+    OptimizerHook,
+)
 from .profiler import ProfilerHook
 from .sampler_seed import DistSamplerSeedHook
 from .sync_buffer import SyncBuffersHook

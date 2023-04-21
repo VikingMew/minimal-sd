@@ -2,7 +2,6 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-
 from annotator.mmpkg.mmcv.cnn import CONV_LAYERS, ConvAWS2d, constant_init
 from annotator.mmpkg.mmcv.ops.deform_conv import deform_conv2d
 from annotator.mmpkg.mmcv.utils import TORCH_VERSION, digit_version

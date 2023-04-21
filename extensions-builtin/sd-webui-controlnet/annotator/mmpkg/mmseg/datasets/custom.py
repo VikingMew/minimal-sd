@@ -6,10 +6,10 @@ from functools import reduce
 import annotator.mmpkg.mmcv as mmcv
 import numpy as np
 from annotator.mmpkg.mmcv.utils import print_log
-from torch.utils.data import Dataset
-
 from annotator.mmpkg.mmseg.core import eval_metrics
 from annotator.mmpkg.mmseg.utils import get_root_logger
+from torch.utils.data import Dataset
+
 from .builder import DATASETS
 from .pipelines import Compose
 
@@ -364,6 +364,7 @@ class CustomDataset(Dataset):
 
         try:
             from prettytable import PrettyTable
+
             # for logger
             class_table_data = PrettyTable()
             for key, val in ret_metrics_class.items():

@@ -1,7 +1,6 @@
+import annotator.mmpkg.mmseg as mmseg
 from annotator.mmpkg.mmcv.utils import collect_env as collect_base_env
 from annotator.mmpkg.mmcv.utils import get_git_hash
-
-import annotator.mmpkg.mmseg as mmseg
 
 
 def collect_env():

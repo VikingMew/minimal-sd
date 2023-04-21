@@ -1,10 +1,9 @@
 # Copyright (c) OpenMMLab. All rights reserved.
 import torch
-from torch.nn.parallel.distributed import (DistributedDataParallel,
-                                           _find_tensors)
-
 from annotator.mmpkg.mmcv import print_log
 from annotator.mmpkg.mmcv.utils import TORCH_VERSION, digit_version
+from torch.nn.parallel.distributed import DistributedDataParallel, _find_tensors
+
 from .scatter_gather import scatter_kwargs
 
 

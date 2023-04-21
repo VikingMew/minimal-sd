@@ -7,12 +7,13 @@ fair comparison against the originals.
 Copyright 2020 Ross Wightman
 """
 import argparse
-import numpy as np
-from caffe2.python import core, workspace, model_helper
-from caffe2.proto import caffe2_pb2
-from data import create_loader, resolve_data_config, Dataset
-from utils import AverageMeter
 import time
+
+import numpy as np
+from caffe2.proto import caffe2_pb2
+from caffe2.python import core, model_helper, workspace
+from data import Dataset, create_loader, resolve_data_config
+from utils import AverageMeter
 
 parser = argparse.ArgumentParser(description='Caffe2 ImageNet Validation')
 parser.add_argument('data', metavar='DIR',

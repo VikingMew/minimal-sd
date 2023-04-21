@@ -1,14 +1,11 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 import copy
-import numpy as np
 from contextlib import contextmanager
 from itertools import count
 from typing import List
-import torch
-from fvcore.transforms import HFlipTransform, NoOpTransform
-from torch import nn
-from torch.nn.parallel import DistributedDataParallel
 
+import numpy as np
+import torch
 from annotator.oneformer.detectron2.config import configurable
 from annotator.oneformer.detectron2.data.detection_utils import read_image
 from annotator.oneformer.detectron2.data.transforms import (
@@ -18,6 +15,9 @@ from annotator.oneformer.detectron2.data.transforms import (
     apply_augmentations,
 )
 from annotator.oneformer.detectron2.structures import Boxes, Instances
+from fvcore.transforms import HFlipTransform, NoOpTransform
+from torch import nn
+from torch.nn.parallel import DistributedDataParallel
 
 from .meta_arch import GeneralizedRCNN
 from .postprocessing import detector_postprocess

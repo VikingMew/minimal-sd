@@ -1,4 +1,5 @@
 import os
+
 from modules import shared
 
 models_path = shared.opts.data.get('control_net_modules_path', None)

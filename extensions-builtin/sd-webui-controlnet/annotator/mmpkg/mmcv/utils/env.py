@@ -6,10 +6,10 @@ import subprocess
 import sys
 from collections import defaultdict
 
+import annotator.mmpkg.mmcv as mmcv
 import cv2
 import torch
 
-import annotator.mmpkg.mmcv as mmcv
 from .parrots_wrapper import get_build_config
 
 
@@ -84,7 +84,10 @@ def collect_env():
     env_info['MMCV'] = mmcv.__version__
 
     try:
-        from annotator.mmpkg.mmcv.ops import get_compiler_version, get_compiling_cuda_version
+        from annotator.mmpkg.mmcv.ops import (
+            get_compiler_version,
+            get_compiling_cuda_version,
+        )
     except ModuleNotFoundError:
         env_info['MMCV Compiler'] = 'n/a'
         env_info['MMCV CUDA Compiler'] = 'n/a'

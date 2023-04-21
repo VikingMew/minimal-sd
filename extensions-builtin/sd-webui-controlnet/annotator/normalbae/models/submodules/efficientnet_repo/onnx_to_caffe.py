@@ -3,7 +3,6 @@ import argparse
 import onnx
 from caffe2.python.onnx.backend import Caffe2Backend
 
-
 parser = argparse.ArgumentParser(description="Convert ONNX to Caffe2")
 
 parser.add_argument("model", help="The ONNX model")

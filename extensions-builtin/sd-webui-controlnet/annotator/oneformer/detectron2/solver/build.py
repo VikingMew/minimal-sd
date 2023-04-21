@@ -5,15 +5,15 @@ import logging
 from collections import defaultdict
 from enum import Enum
 from typing import Any, Callable, Dict, Iterable, List, Optional, Set, Type, Union
+
 import torch
+from annotator.oneformer.detectron2.config import CfgNode
+from annotator.oneformer.detectron2.utils.env import TORCH_VERSION
 from fvcore.common.param_scheduler import (
     CosineParamScheduler,
     MultiStepParamScheduler,
     StepWithFixedGammaParamScheduler,
 )
-
-from annotator.oneformer.detectron2.config import CfgNode
-from annotator.oneformer.detectron2.utils.env import TORCH_VERSION
 
 from .lr_scheduler import LRMultiplier, LRScheduler, WarmupParamScheduler
 

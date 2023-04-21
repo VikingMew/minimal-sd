@@ -8,9 +8,8 @@ model loading.
 """
 
 import numpy as np
-from torch import nn
-
 from annotator.oneformer.detectron2.layers import CNNBlockBase, ShapeSpec, get_norm
+from torch import nn
 
 from .backbone import Backbone
 

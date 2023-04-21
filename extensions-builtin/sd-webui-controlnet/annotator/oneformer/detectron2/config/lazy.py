@@ -12,11 +12,11 @@ from contextlib import contextmanager
 from copy import deepcopy
 from dataclasses import is_dataclass
 from typing import List, Tuple, Union
-import yaml
-from omegaconf import DictConfig, ListConfig, OmegaConf, SCMode
 
+import yaml
 from annotator.oneformer.detectron2.utils.file_io import PathManager
 from annotator.oneformer.detectron2.utils.registry import _convert_target_to_string
+from omegaconf import DictConfig, ListConfig, OmegaConf, SCMode
 
 __all__ = ["LazyCall", "LazyConfig"]
 

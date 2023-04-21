@@ -8,8 +8,13 @@
 
 import torch
 import torch.nn as nn
+from annotator.oneformer.detectron2.modeling import (
+    BACKBONE_REGISTRY,
+    Backbone,
+    ShapeSpec,
+)
 from timm.models.layers import DropPath
-from annotator.oneformer.detectron2.modeling import BACKBONE_REGISTRY, Backbone, ShapeSpec
+
 
 class NeighborhoodAttention(nn.Module):
     """

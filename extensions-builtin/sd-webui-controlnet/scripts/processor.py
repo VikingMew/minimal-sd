@@ -1,7 +1,6 @@
 import cv2
 import numpy as np
-from annotator.util import resize_image, HWC3
-
+from annotator.util import HWC3, resize_image
 
 model_canny = None
 

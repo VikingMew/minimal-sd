@@ -9,7 +9,7 @@ import collections.abc
 import math
 from functools import partial
 from itertools import repeat
-from typing import Tuple, Optional
+from typing import Optional, Tuple
 
 import numpy as np
 import torch

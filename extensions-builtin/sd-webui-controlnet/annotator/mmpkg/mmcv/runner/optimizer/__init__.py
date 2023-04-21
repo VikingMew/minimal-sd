@@ -1,6 +1,10 @@
 # Copyright (c) OpenMMLab. All rights reserved.
-from .builder import (OPTIMIZER_BUILDERS, OPTIMIZERS, build_optimizer,
-                      build_optimizer_constructor)
+from .builder import (
+    OPTIMIZER_BUILDERS,
+    OPTIMIZERS,
+    build_optimizer,
+    build_optimizer_constructor,
+)
 from .default_constructor import DefaultOptimizerConstructor
 
 __all__ = [

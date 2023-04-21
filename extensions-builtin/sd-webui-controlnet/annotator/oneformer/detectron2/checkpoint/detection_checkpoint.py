@@ -3,12 +3,12 @@ import logging
 import os
 import pickle
 from urllib.parse import parse_qs, urlparse
-import torch
-from fvcore.common.checkpoint import Checkpointer
-from torch.nn.parallel import DistributedDataParallel
 
 import annotator.oneformer.detectron2.utils.comm as comm
+import torch
 from annotator.oneformer.detectron2.utils.file_io import PathManager
+from fvcore.common.checkpoint import Checkpointer
+from torch.nn.parallel import DistributedDataParallel
 
 from .c2_model_loading import align_and_update_state_dicts
 

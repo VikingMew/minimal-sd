@@ -5,12 +5,12 @@ import warnings
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from torch.autograd.function import Function, once_differentiable
-
 from annotator.mmpkg.mmcv import deprecated_api_warning
 from annotator.mmpkg.mmcv.cnn import constant_init, xavier_init
 from annotator.mmpkg.mmcv.cnn.bricks.registry import ATTENTION
 from annotator.mmpkg.mmcv.runner import BaseModule
+from torch.autograd.function import Function, once_differentiable
+
 from ..utils import ext_loader
 
 ext_module = ext_loader.load_ext(

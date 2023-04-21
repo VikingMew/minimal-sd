@@ -2,7 +2,9 @@
 """
 Utilities for bounding box manipulation and GIoU.
 """
-import torch, os
+import os
+
+import torch
 from torchvision.ops.boxes import box_area
 
 

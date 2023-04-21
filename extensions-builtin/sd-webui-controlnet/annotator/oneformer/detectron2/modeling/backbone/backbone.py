@@ -1,8 +1,8 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 from abc import ABCMeta, abstractmethod
 from typing import Dict
-import torch.nn as nn
 
+import torch.nn as nn
 from annotator.oneformer.detectron2.layers import ShapeSpec
 
 __all__ = ["Backbone"]

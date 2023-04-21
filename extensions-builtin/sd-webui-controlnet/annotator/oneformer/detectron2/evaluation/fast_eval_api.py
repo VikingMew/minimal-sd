@@ -1,11 +1,11 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 import copy
 import logging
-import numpy as np
 import time
-from annotator.oneformer.pycocotools.cocoeval import COCOeval
 
+import numpy as np
 from annotator.oneformer.detectron2 import _C
+from annotator.oneformer.pycocotools.cocoeval import COCOeval
 
 logger = logging.getLogger(__name__)
 

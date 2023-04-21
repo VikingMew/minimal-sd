@@ -1,41 +1,47 @@
 import gc
+import importlib
 import os
 from collections import OrderedDict
-from typing import Union, Dict, Any, Optional
-import importlib
+from typing import Any, Dict, Optional, Union
 
-import torch
-
-import modules.scripts as scripts
-from modules import shared, devices, script_callbacks, processing, masking, images
+import annotator
 import gradio as gr
 import numpy as np
-
+import torch
 from einops import rearrange
-import annotator
-from scripts import global_state, hook, external_code, processor
+from scripts import external_code, global_state, hook, processor
+
+import modules.scripts as scripts
+from modules import devices, images, masking, processing, script_callbacks, shared
+
 importlib.reload(annotator)
 importlib.reload(processor)
 importlib.reload(global_state)
 importlib.reload(hook)
 importlib.reload(external_code)
-from scripts.cldm import PlugableControlModel
-from scripts.processor import *
-from scripts.adapter import PlugableAdapter
-from scripts.utils import load_state_dict
-from scripts.hook import ControlParams, UnetHook
-from modules.processing import StableDiffusionProcessingImg2Img, StableDiffusionProcessingTxt2Img
-from modules.images import save_image
-from modules.ui_components import FormRow
-import cv2
 from pathlib import Path
+
+import cv2
 from PIL import Image, ImageFilter, ImageOps
+from scripts.adapter import PlugableAdapter
+from scripts.cldm import PlugableControlModel
+from scripts.hook import ControlParams, UnetHook
 from scripts.lvminthin import lvmin_thin
-from torchvision.transforms import Resize, InterpolationMode, CenterCrop, Compose
+from scripts.processor import *
+from scripts.utils import load_state_dict
+from torchvision.transforms import CenterCrop, Compose, InterpolationMode, Resize
+
+from modules.images import save_image
+from modules.processing import (
+    StableDiffusionProcessingImg2Img,
+    StableDiffusionProcessingTxt2Img,
+)
+from modules.ui_components import FormRow
 
 gradio_compat = True
 try:
     from distutils.version import LooseVersion
+
     from importlib_metadata import version
     if LooseVersion(version("gradio")) < LooseVersion("3.10"):
         gradio_compat = False
@@ -45,10 +51,11 @@ except ImportError:
 # svgsupports
 svgsupport = False
 try:
-    import io
     import base64
-    from svglib.svglib import svg2rlg
+    import io
+
     from reportlab.graphics import renderPM
+    from svglib.svglib import svg2rlg
     svgsupport = True
 except ImportError:
     pass

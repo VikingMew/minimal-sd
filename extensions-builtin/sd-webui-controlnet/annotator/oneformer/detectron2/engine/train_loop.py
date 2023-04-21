@@ -2,16 +2,16 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 
 import logging
-import numpy as np
 import time
 import weakref
 from typing import List, Mapping, Optional
-import torch
-from torch.nn.parallel import DataParallel, DistributedDataParallel
 
 import annotator.oneformer.detectron2.utils.comm as comm
+import numpy as np
+import torch
 from annotator.oneformer.detectron2.utils.events import EventStorage, get_event_storage
 from annotator.oneformer.detectron2.utils.logger import _log_api_usage
+from torch.nn.parallel import DataParallel, DistributedDataParallel
 
 __all__ = ["HookBase", "TrainerBase", "SimpleTrainer", "AMPTrainer"]
 

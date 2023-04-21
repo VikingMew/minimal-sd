@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 # Copyright 2004-present Facebook. All Rights Reserved.
 import copy
-import numpy as np
 from typing import List
-import torch
 
+import numpy as np
+import torch
 from annotator.oneformer.detectron2.config import configurable
 from annotator.oneformer.detectron2.structures import Boxes, Instances
 from annotator.oneformer.detectron2.structures.boxes import pairwise_iou

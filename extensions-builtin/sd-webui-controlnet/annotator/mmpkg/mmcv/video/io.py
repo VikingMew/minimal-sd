@@ -3,12 +3,21 @@ import os.path as osp
 from collections import OrderedDict
 
 import cv2
-from cv2 import (CAP_PROP_FOURCC, CAP_PROP_FPS, CAP_PROP_FRAME_COUNT,
-                 CAP_PROP_FRAME_HEIGHT, CAP_PROP_FRAME_WIDTH,
-                 CAP_PROP_POS_FRAMES, VideoWriter_fourcc)
-
-from annotator.mmpkg.mmcv.utils import (check_file_exist, mkdir_or_exist, scandir,
-                        track_progress)
+from annotator.mmpkg.mmcv.utils import (
+    check_file_exist,
+    mkdir_or_exist,
+    scandir,
+    track_progress,
+)
+from cv2 import (
+    CAP_PROP_FOURCC,
+    CAP_PROP_FPS,
+    CAP_PROP_FRAME_COUNT,
+    CAP_PROP_FRAME_HEIGHT,
+    CAP_PROP_FRAME_WIDTH,
+    CAP_PROP_POS_FRAMES,
+    VideoWriter_fourcc,
+)
 
 
 class Cache:

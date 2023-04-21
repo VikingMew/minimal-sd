@@ -8,7 +8,9 @@ import logging
 import os
 
 from annotator.oneformer.detectron2.data import DatasetCatalog, MetadataCatalog
-from annotator.oneformer.detectron2.data.datasets.builtin_meta import CITYSCAPES_CATEGORIES
+from annotator.oneformer.detectron2.data.datasets.builtin_meta import (
+    CITYSCAPES_CATEGORIES,
+)
 from annotator.oneformer.detectron2.utils.file_io import PathManager
 
 """

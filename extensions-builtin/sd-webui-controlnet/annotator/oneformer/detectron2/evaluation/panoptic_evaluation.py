@@ -4,17 +4,17 @@ import io
 import itertools
 import json
 import logging
-import numpy as np
 import os
 import tempfile
 from collections import OrderedDict
 from typing import Optional
-from PIL import Image
-from tabulate import tabulate
 
+import numpy as np
 from annotator.oneformer.detectron2.data import MetadataCatalog
 from annotator.oneformer.detectron2.utils import comm
 from annotator.oneformer.detectron2.utils.file_io import PathManager
+from PIL import Image
+from tabulate import tabulate
 
 from .evaluator import DatasetEvaluator
 

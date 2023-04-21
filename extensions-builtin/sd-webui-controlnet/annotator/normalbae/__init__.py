@@ -1,13 +1,15 @@
 import os
 import types
-import torch
-import numpy as np
 
-from einops import rearrange
-from .models.NNET import NNET
-from modules import devices
-from annotator.annotator_path import models_path
+import numpy as np
+import torch
 import torchvision.transforms as transforms
+from annotator.annotator_path import models_path
+from einops import rearrange
+
+from modules import devices
+
+from .models.NNET import NNET
 
 
 # load model

@@ -1,12 +1,14 @@
 import os
-import torch
+
 import numpy as np
-from einops import rearrange
+import torch
+from annotator.annotator_path import models_path
 from annotator.pidinet.model import pidinet
 from annotator.util import safe_step
-from modules import devices
-from annotator.annotator_path import models_path
+from einops import rearrange
 from scripts.utils import load_state_dict
+
+from modules import devices
 
 netNetwork = None
 remote_model_path = "https://huggingface.co/lllyasviel/Annotators/resolve/main/table5_pidinet.pth"

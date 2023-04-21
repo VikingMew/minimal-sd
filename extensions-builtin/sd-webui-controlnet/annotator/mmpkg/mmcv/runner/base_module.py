@@ -6,7 +6,6 @@ from collections import defaultdict
 from logging import FileHandler
 
 import torch.nn as nn
-
 from annotator.mmpkg.mmcv.runner.dist_utils import master_only
 from annotator.mmpkg.mmcv.utils.logging import get_logger, logger_initialized, print_log
 

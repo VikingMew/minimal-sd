@@ -5,12 +5,11 @@
 
 import copy
 import logging
-import numpy as np
 from typing import List, Optional, Union
+
+import numpy as np
 import torch
-
 from annotator.oneformer.detectron2.config import configurable
-
 from annotator.oneformer.detectron2.data import detection_utils as utils
 from annotator.oneformer.detectron2.data import transforms as T
 from annotator.oneformer.oneformer.data.tokenizer import SimpleTokenizer, Tokenize

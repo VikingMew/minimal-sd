@@ -7,10 +7,9 @@ from collections import deque
 
 import cv2
 import torch
-
 from annotator.oneformer.detectron2.data import MetadataCatalog
-from defaults import DefaultPredictor
 from annotator.oneformer.detectron2.utils.video_visualizer import VideoVisualizer
+from defaults import DefaultPredictor
 from visualizer import ColorMode, Visualizer
 
 

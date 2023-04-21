@@ -4,12 +4,12 @@ import shutil
 
 import cv2
 import gradio as gr
-import modules.scripts as scripts
+from PIL import Image
 
+import modules.scripts as scripts
 from modules import images
 from modules.processing import process_images
 from modules.shared import opts
-from PIL import Image
 
 _BASEDIR = "/controlnet-m2m"
 _BASEFILE = "animation"

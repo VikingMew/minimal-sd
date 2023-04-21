@@ -5,8 +5,9 @@ Copyright 2020 Ross Wightman
 import re
 from copy import deepcopy
 
-from .conv2d_layers import *
 from geffnet.activations import *
+
+from .conv2d_layers import *
 
 __all__ = ['get_bn_args_tf', 'resolve_bn_args', 'resolve_se_args', 'resolve_act_layer', 'make_divisible',
            'round_channels', 'drop_connect', 'SqueezeExcite', 'ConvBnAct', 'DepthwiseSeparableConv',

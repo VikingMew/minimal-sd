@@ -1,14 +1,17 @@
 import os
+
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 
-import torch
 import numpy as np
+import torch
+from annotator.annotator_path import models_path
+
+from modules import devices
+
 from . import util
 from .body import Body
-from .hand import Hand
 from .face import Face
-from modules import devices
-from annotator.annotator_path import models_path
+from .hand import Hand
 
 body_model_path = "https://huggingface.co/lllyasviel/Annotators/resolve/main/body_pose_model.pth"
 hand_model_path = "https://huggingface.co/lllyasviel/Annotators/resolve/main/hand_pose_model.pth"

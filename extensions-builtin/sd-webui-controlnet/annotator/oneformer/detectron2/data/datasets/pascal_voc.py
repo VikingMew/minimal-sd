@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) Facebook, Inc. and its affiliates.
 
-import numpy as np
 import os
 import xml.etree.ElementTree as ET
 from typing import List, Tuple, Union
 
+import numpy as np
 from annotator.oneformer.detectron2.data import DatasetCatalog, MetadataCatalog
 from annotator.oneformer.detectron2.structures import BoxMode
 from annotator.oneformer.detectron2.utils.file_io import PathManager

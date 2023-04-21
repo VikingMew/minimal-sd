@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-import numpy as np
 from typing import List
 
+import numpy as np
 from annotator.oneformer.detectron2.structures import Instances
 
 

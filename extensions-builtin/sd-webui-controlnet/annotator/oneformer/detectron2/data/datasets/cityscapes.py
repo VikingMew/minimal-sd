@@ -3,16 +3,16 @@ import functools
 import json
 import logging
 import multiprocessing as mp
-import numpy as np
 import os
 from itertools import chain
-import annotator.oneformer.pycocotools.mask as mask_util
-from PIL import Image
 
+import annotator.oneformer.pycocotools.mask as mask_util
+import numpy as np
 from annotator.oneformer.detectron2.structures import BoxMode
 from annotator.oneformer.detectron2.utils.comm import get_world_size
 from annotator.oneformer.detectron2.utils.file_io import PathManager
 from annotator.oneformer.detectron2.utils.logger import setup_logger
+from PIL import Image
 
 try:
     import cv2  # noqa

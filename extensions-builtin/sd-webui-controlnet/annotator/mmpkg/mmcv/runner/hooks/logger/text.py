@@ -4,12 +4,12 @@ import os
 import os.path as osp
 from collections import OrderedDict
 
+import annotator.mmpkg.mmcv as mmcv
 import torch
 import torch.distributed as dist
-
-import annotator.mmpkg.mmcv as mmcv
 from annotator.mmpkg.mmcv.fileio.file_client import FileClient
 from annotator.mmpkg.mmcv.utils import is_tuple_of, scandir
+
 from ..hook import HOOKS
 from .base import LoggerHook
 

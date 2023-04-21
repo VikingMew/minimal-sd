@@ -1,14 +1,14 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 import copy
 import itertools
-import numpy as np
 from typing import Any, Iterator, List, Union
-import annotator.oneformer.pycocotools.mask as mask_util
-import torch
-from torch import device
 
+import annotator.oneformer.pycocotools.mask as mask_util
+import numpy as np
+import torch
 from annotator.oneformer.detectron2.layers.roi_align import ROIAlign
 from annotator.oneformer.detectron2.utils.memory import retry_if_cuda_oom
+from torch import device
 
 from .boxes import Boxes
 
@@ -521,7 +521,10 @@ class ROIMasks:
         """
         Args: see documentation of :func:`paste_masks_in_image`.
         """
-        from annotator.oneformer.detectron2.layers.mask_ops import paste_masks_in_image, _paste_masks_tensor_shape
+        from annotator.oneformer.detectron2.layers.mask_ops import (
+            _paste_masks_tensor_shape,
+            paste_masks_in_image,
+        )
 
         if torch.jit.is_tracing():
             if isinstance(height, torch.Tensor):

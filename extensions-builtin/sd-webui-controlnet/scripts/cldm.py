@@ -1,14 +1,26 @@
 import torch
 import torch.nn as nn
 from omegaconf import OmegaConf
+
 from modules import devices, shared
 
 cond_cast_unet = getattr(devices, 'cond_cast_unet', lambda x: x)
 
-from ldm.util import exists
 from ldm.modules.attention import SpatialTransformer
-from ldm.modules.diffusionmodules.util import conv_nd, linear, zero_module, timestep_embedding
-from ldm.modules.diffusionmodules.openaimodel import UNetModel, TimestepEmbedSequential, ResBlock, Downsample, AttentionBlock
+from ldm.modules.diffusionmodules.openaimodel import (
+    AttentionBlock,
+    Downsample,
+    ResBlock,
+    TimestepEmbedSequential,
+    UNetModel,
+)
+from ldm.modules.diffusionmodules.util import (
+    conv_nd,
+    linear,
+    timestep_embedding,
+    zero_module,
+)
+from ldm.util import exists
 
 
 class TorchHijackForUnet:

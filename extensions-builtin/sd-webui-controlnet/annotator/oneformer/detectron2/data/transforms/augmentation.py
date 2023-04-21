@@ -2,9 +2,10 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 
 import inspect
-import numpy as np
 import pprint
 from typing import Any, List, Optional, Tuple, Union
+
+import numpy as np
 from fvcore.transforms.transform import Transform, TransformList
 
 """

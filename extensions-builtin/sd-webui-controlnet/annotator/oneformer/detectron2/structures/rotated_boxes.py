@@ -1,8 +1,8 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 import math
 from typing import List, Tuple
-import torch
 
+import torch
 from annotator.oneformer.detectron2.layers.rotated_boxes import pairwise_iou_rotated
 
 from .boxes import Boxes

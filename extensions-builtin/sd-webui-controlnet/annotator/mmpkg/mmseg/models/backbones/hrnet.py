@@ -1,11 +1,15 @@
 import torch.nn as nn
-from annotator.mmpkg.mmcv.cnn import (build_conv_layer, build_norm_layer, constant_init,
-                      kaiming_init)
+from annotator.mmpkg.mmcv.cnn import (
+    build_conv_layer,
+    build_norm_layer,
+    constant_init,
+    kaiming_init,
+)
 from annotator.mmpkg.mmcv.runner import load_checkpoint
 from annotator.mmpkg.mmcv.utils.parrots_wrapper import _BatchNorm
-
 from annotator.mmpkg.mmseg.ops import Upsample, resize
 from annotator.mmpkg.mmseg.utils import get_root_logger
+
 from ..builder import BACKBONES
 from .resnet import BasicBlock, Bottleneck
 

@@ -3,20 +3,19 @@
 # Modified by Jitesh Jain (https://github.com/praeclarumjj3)
 # ------------------------------------------------------------------------------
 
+import contextlib
+import io
 import json
+import logging
 import os
 
+import annotator.oneformer.pycocotools.mask as mask_util
 from annotator.oneformer.detectron2.data import DatasetCatalog, MetadataCatalog
 from annotator.oneformer.detectron2.data.datasets import load_sem_seg
 from annotator.oneformer.detectron2.data.datasets.builtin_meta import COCO_CATEGORIES
-from annotator.oneformer.detectron2.utils.file_io import PathManager
-import contextlib
-import logging
-import io
-from fvcore.common.timer import Timer
-import annotator.oneformer.pycocotools.mask as mask_util
 from annotator.oneformer.detectron2.structures import BoxMode
-
+from annotator.oneformer.detectron2.utils.file_io import PathManager
+from fvcore.common.timer import Timer
 
 logger = logging.getLogger(__name__)
 

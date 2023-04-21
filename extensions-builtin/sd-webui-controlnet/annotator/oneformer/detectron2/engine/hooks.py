@@ -11,19 +11,19 @@ import tempfile
 import time
 import warnings
 from collections import Counter
-import torch
-from fvcore.common.checkpoint import Checkpointer
-from fvcore.common.checkpoint import PeriodicCheckpointer as _PeriodicCheckpointer
-from fvcore.common.param_scheduler import ParamScheduler
-from fvcore.common.timer import Timer
-from fvcore.nn.precise_bn import get_bn_modules, update_bn_stats
 
 import annotator.oneformer.detectron2.utils.comm as comm
+import torch
 from annotator.oneformer.detectron2.evaluation.testing import flatten_results_dict
 from annotator.oneformer.detectron2.solver import LRMultiplier
 from annotator.oneformer.detectron2.solver import LRScheduler as _LRScheduler
 from annotator.oneformer.detectron2.utils.events import EventStorage, EventWriter
 from annotator.oneformer.detectron2.utils.file_io import PathManager
+from fvcore.common.checkpoint import Checkpointer
+from fvcore.common.checkpoint import PeriodicCheckpointer as _PeriodicCheckpointer
+from fvcore.common.param_scheduler import ParamScheduler
+from fvcore.common.timer import Timer
+from fvcore.nn.precise_bn import get_bn_modules, update_bn_stats
 
 from .train_loop import HookBase
 

@@ -1,16 +1,16 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 import logging
-import numpy as np
 from typing import Dict, List, Optional, Tuple
-import torch
-from torch import nn
 
+import numpy as np
+import torch
 from annotator.oneformer.detectron2.config import configurable
 from annotator.oneformer.detectron2.data.detection_utils import convert_image_to_rgb
 from annotator.oneformer.detectron2.layers import move_device_like
 from annotator.oneformer.detectron2.structures import ImageList, Instances
 from annotator.oneformer.detectron2.utils.events import get_event_storage
 from annotator.oneformer.detectron2.utils.logger import log_first_n
+from torch import nn
 
 from ..backbone import Backbone, build_backbone
 from ..postprocessing import detector_postprocess

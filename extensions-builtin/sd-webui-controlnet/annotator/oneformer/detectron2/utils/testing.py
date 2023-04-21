@@ -1,17 +1,14 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 import io
-import numpy as np
 import os
 import re
 import tempfile
 import unittest
 from typing import Callable
+
+import numpy as np
 import torch
 import torch.onnx.symbolic_helper as sym_help
-from packaging import version
-from torch._C import ListType
-from torch.onnx import register_custom_op_symbolic
-
 from annotator.oneformer.detectron2 import model_zoo
 from annotator.oneformer.detectron2.config import CfgNode, LazyConfig, instantiate
 from annotator.oneformer.detectron2.data import DatasetCatalog
@@ -19,7 +16,9 @@ from annotator.oneformer.detectron2.data.detection_utils import read_image
 from annotator.oneformer.detectron2.modeling import build_model
 from annotator.oneformer.detectron2.structures import Boxes, Instances, ROIMasks
 from annotator.oneformer.detectron2.utils.file_io import PathManager
-
+from packaging import version
+from torch._C import ListType
+from torch.onnx import register_custom_op_symbolic
 
 """
 Internal utilities for tests. Don't use except for writing tests.
@@ -216,7 +215,9 @@ def unregister_custom_op_onnx_export(opname: str, opset_version: int, min_versio
     # TODO: _unregister_custom_op_symbolic is introduced PyTorch>=1.10
     #       Remove after PyTorch 1.10+ is used by ALL detectron2's CI
     try:
-        from torch.onnx import unregister_custom_op_symbolic as _unregister_custom_op_symbolic
+        from torch.onnx import (
+            unregister_custom_op_symbolic as _unregister_custom_op_symbolic,
+        )
     except ImportError:
 
         def _unregister_custom_op_symbolic(symbolic_name, opset_version):

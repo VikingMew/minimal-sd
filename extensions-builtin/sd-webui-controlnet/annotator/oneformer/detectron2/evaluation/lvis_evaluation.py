@@ -6,9 +6,9 @@ import logging
 import os
 import pickle
 from collections import OrderedDict
-import torch
 
 import annotator.oneformer.detectron2.utils.comm as comm
+import torch
 from annotator.oneformer.detectron2.config import CfgNode
 from annotator.oneformer.detectron2.data import MetadataCatalog
 from annotator.oneformer.detectron2.structures import Boxes, BoxMode, pairwise_iou

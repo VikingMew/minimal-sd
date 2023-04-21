@@ -1,9 +1,9 @@
-import re
 import os
+import re
 
 import torch
 
-from modules import shared, paths, sd_disable_initialization
+from modules import paths, sd_disable_initialization, shared
 
 sd_configs_path = shared.sd_configs_path
 sd_repo_configs_path = os.path.join(
@@ -35,6 +35,7 @@ def is_using_v_parameterization_for_sd2(state_dict):
     """
 
     import ldm.modules.diffusionmodules.openaimodel
+
     from modules import devices
 
     device = devices.cpu

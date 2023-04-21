@@ -2,9 +2,10 @@ import os.path
 import stat
 from collections import OrderedDict
 
-from modules import shared, scripts, sd_models
-from modules.paths import models_path
 from scripts.processor import *
+
+from modules import scripts, sd_models, shared
+from modules.paths import models_path
 
 CN_MODEL_EXTS = [".pt", ".pth", ".ckpt", ".safetensors"]
 cn_models_dir = os.path.join(models_path, "ControlNet")

@@ -1,9 +1,9 @@
-import unittest
 import importlib
+import unittest
+
 utils = importlib.import_module('extensions.sd-webui-controlnet.tests.utils', 'utils')
 utils.setup_test_env()
 import requests
-
 
 
 class TestTxt2ImgWorkingBase(unittest.TestCase):

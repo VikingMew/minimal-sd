@@ -2,10 +2,15 @@
 import warnings
 
 import torch
+from annotator.mmpkg.mmcv.utils import (
+    _BatchNorm,
+    _InstanceNorm,
+    build_from_cfg,
+    is_list_of,
+)
+from annotator.mmpkg.mmcv.utils.ext_loader import check_ops_exist
 from torch.nn import GroupNorm, LayerNorm
 
-from annotator.mmpkg.mmcv.utils import _BatchNorm, _InstanceNorm, build_from_cfg, is_list_of
-from annotator.mmpkg.mmcv.utils.ext_loader import check_ops_exist
 from .builder import OPTIMIZER_BUILDERS, OPTIMIZERS
 
 

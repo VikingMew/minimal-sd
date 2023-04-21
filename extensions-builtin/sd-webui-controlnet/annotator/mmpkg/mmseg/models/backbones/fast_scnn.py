@@ -1,11 +1,15 @@
 import torch
 import torch.nn as nn
-from annotator.mmpkg.mmcv.cnn import (ConvModule, DepthwiseSeparableConvModule, constant_init,
-                      kaiming_init)
-from torch.nn.modules.batchnorm import _BatchNorm
-
+from annotator.mmpkg.mmcv.cnn import (
+    ConvModule,
+    DepthwiseSeparableConvModule,
+    constant_init,
+    kaiming_init,
+)
 from annotator.mmpkg.mmseg.models.decode_heads.psp_head import PPM
 from annotator.mmpkg.mmseg.ops import resize
+from torch.nn.modules.batchnorm import _BatchNorm
+
 from ..builder import BACKBONES
 from ..utils.inverted_residual import InvertedResidual
 

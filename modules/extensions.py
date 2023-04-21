@@ -3,10 +3,11 @@ import sys
 import time
 import traceback
 
-# import git
-
 from modules import shared
 from modules.paths_internal import extensions_builtin_dir, extensions_dir
+
+# import git
+
 
 extensions = []
 

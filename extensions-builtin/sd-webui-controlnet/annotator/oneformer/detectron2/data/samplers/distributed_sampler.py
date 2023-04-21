@@ -4,10 +4,10 @@ import logging
 import math
 from collections import defaultdict
 from typing import Optional
-import torch
-from torch.utils.data.sampler import Sampler
 
+import torch
 from annotator.oneformer.detectron2.utils import comm
+from torch.utils.data.sampler import Sampler
 
 logger = logging.getLogger(__name__)
 

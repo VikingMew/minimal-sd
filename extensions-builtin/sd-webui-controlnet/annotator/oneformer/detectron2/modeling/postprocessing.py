@@ -1,8 +1,7 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 import torch
-from torch.nn import functional as F
-
 from annotator.oneformer.detectron2.structures import Instances, ROIMasks
+from torch.nn import functional as F
 
 
 # perhaps should rename to "resize_instance"

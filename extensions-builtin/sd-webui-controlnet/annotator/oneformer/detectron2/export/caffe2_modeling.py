@@ -4,12 +4,17 @@ import functools
 import io
 import struct
 import types
-import torch
 
+import torch
 from annotator.oneformer.detectron2.modeling import meta_arch
 from annotator.oneformer.detectron2.modeling.box_regression import Box2BoxTransform
 from annotator.oneformer.detectron2.modeling.roi_heads import keypoint_head
-from annotator.oneformer.detectron2.structures import Boxes, ImageList, Instances, RotatedBoxes
+from annotator.oneformer.detectron2.structures import (
+    Boxes,
+    ImageList,
+    Instances,
+    RotatedBoxes,
+)
 
 from .c10 import Caffe2Compatible
 from .caffe2_patch import ROIHeadsPatcher, patch_generalized_rcnn

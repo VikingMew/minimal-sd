@@ -7,11 +7,12 @@ pipeline for a fair comparison against the originals.
 Copyright 2020 Ross Wightman
 """
 import argparse
+import time
+
 import numpy as np
 import onnxruntime
-from data import create_loader, resolve_data_config, Dataset
+from data import Dataset, create_loader, resolve_data_config
 from utils import AverageMeter
-import time
 
 parser = argparse.ArgumentParser(description='Caffe2 ImageNet Validation')
 parser.add_argument('data', metavar='DIR',

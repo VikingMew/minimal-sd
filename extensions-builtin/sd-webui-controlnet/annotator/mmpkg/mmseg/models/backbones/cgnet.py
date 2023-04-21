@@ -1,12 +1,17 @@
 import torch
 import torch.nn as nn
 import torch.utils.checkpoint as cp
-from annotator.mmpkg.mmcv.cnn import (ConvModule, build_conv_layer, build_norm_layer,
-                      constant_init, kaiming_init)
+from annotator.mmpkg.mmcv.cnn import (
+    ConvModule,
+    build_conv_layer,
+    build_norm_layer,
+    constant_init,
+    kaiming_init,
+)
 from annotator.mmpkg.mmcv.runner import load_checkpoint
 from annotator.mmpkg.mmcv.utils.parrots_wrapper import _BatchNorm
-
 from annotator.mmpkg.mmseg.utils import get_root_logger
+
 from ..builder import BACKBONES
 
 

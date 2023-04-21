@@ -8,14 +8,17 @@ from copy import deepcopy
 from typing import Callable, Dict, List, Optional, Tuple, Union
 
 import fvcore.nn.weight_init as weight_init
-from torch import nn
-from torch.nn import functional as F
-
 from annotator.oneformer.detectron2.config import configurable
 from annotator.oneformer.detectron2.layers import Conv2d, ShapeSpec, get_norm
 from annotator.oneformer.detectron2.modeling import SEM_SEG_HEADS_REGISTRY
+from torch import nn
+from torch.nn import functional as F
+
 from ..pixel_decoder.fpn import build_pixel_decoder
-from ..transformer_decoder.oneformer_transformer_decoder import build_transformer_decoder
+from ..transformer_decoder.oneformer_transformer_decoder import (
+    build_transformer_decoder,
+)
+
 
 @SEM_SEG_HEADS_REGISTRY.register()
 class OneFormerHead(nn.Module):

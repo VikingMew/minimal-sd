@@ -1,5 +1,5 @@
-import unittest
 import importlib
+import unittest
 
 import numpy as np
 
@@ -7,9 +7,10 @@ utils = importlib.import_module('extensions.sd-webui-controlnet.tests.utils', 'u
 utils.setup_test_env()
 
 from copy import copy
-from scripts import external_code
-from scripts import controlnet
-from modules import scripts, ui, shared
+
+from scripts import controlnet, external_code
+
+from modules import scripts, shared, ui
 
 
 class TestExternalCodeWorking(unittest.TestCase):

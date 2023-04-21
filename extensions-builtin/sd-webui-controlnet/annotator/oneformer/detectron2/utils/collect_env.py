@@ -1,11 +1,12 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 import importlib
-import numpy as np
 import os
 import re
 import subprocess
 import sys
 from collections import defaultdict
+
+import numpy as np
 import PIL
 import torch
 import torchvision
@@ -149,7 +150,8 @@ def collect_env_info():
             data.append(("ROCM_HOME", str(ROCM_HOME) + msg))
         else:
             try:
-                from torch.utils.collect_env import get_nvidia_driver_version, run as _run
+                from torch.utils.collect_env import get_nvidia_driver_version
+                from torch.utils.collect_env import run as _run
 
                 data.append(("Driver version", get_nvidia_driver_version(_run)))
             except Exception:
@@ -224,7 +226,9 @@ def _test_nccl_worker(rank, num_gpu, dist_url):
 
 if __name__ == "__main__":
     try:
-        from annotator.oneformer.detectron2.utils.collect_env import collect_env_info as f
+        from annotator.oneformer.detectron2.utils.collect_env import (
+            collect_env_info as f,
+        )
 
         print(f())
     except ImportError:

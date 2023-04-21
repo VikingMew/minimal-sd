@@ -3,9 +3,9 @@ import copy
 from collections import defaultdict
 from itertools import chain
 
+from annotator.mmpkg.mmcv.utils import TORCH_VERSION, _BatchNorm, digit_version
 from torch.nn.utils import clip_grad
 
-from annotator.mmpkg.mmcv.utils import TORCH_VERSION, _BatchNorm, digit_version
 from ..dist_utils import allreduce_grads
 from ..fp16_utils import LossScaler, wrap_fp16_model
 from .hook import HOOKS, Hook

@@ -1,10 +1,10 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 import logging
 from datetime import timedelta
+
 import torch
 import torch.distributed as dist
 import torch.multiprocessing as mp
-
 from annotator.oneformer.detectron2.utils import comm
 
 __all__ = ["DEFAULT_TIMEOUT", "launch"]

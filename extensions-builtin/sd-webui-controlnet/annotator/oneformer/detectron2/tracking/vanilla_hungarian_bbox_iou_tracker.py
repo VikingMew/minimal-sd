@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
 # Copyright 2004-present Facebook. All Rights Reserved.
 
-import numpy as np
 from typing import List
 
+import numpy as np
 from annotator.oneformer.detectron2.config import CfgNode as CfgNode_
 from annotator.oneformer.detectron2.config import configurable
 from annotator.oneformer.detectron2.structures import Instances
 from annotator.oneformer.detectron2.structures.boxes import pairwise_iou
-from annotator.oneformer.detectron2.tracking.utils import LARGE_COST_VALUE, create_prediction_pairs
+from annotator.oneformer.detectron2.tracking.utils import (
+    LARGE_COST_VALUE,
+    create_prediction_pairs,
+)
 
 from .base_tracker import TRACKER_HEADS_REGISTRY
 from .hungarian_tracker import BaseHungarianTracker

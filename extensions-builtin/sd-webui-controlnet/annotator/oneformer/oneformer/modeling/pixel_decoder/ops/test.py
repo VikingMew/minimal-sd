@@ -9,17 +9,17 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 # Modified by Bowen Cheng from https://github.com/fundamentalvision/Deformable-DETR
 
-from __future__ import absolute_import
-from __future__ import print_function
-from __future__ import division
+from __future__ import absolute_import, division, print_function
 
 import time
+
 import torch
 import torch.nn as nn
+from functions.ms_deform_attn_func import (
+    MSDeformAttnFunction,
+    ms_deform_attn_core_pytorch,
+)
 from torch.autograd import gradcheck
-
-from functions.ms_deform_attn_func import MSDeformAttnFunction, ms_deform_attn_core_pytorch
-
 
 N, M, D = 1, 2, 2
 Lq, L, P = 2, 2, 2

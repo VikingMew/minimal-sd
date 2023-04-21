@@ -44,15 +44,18 @@ __version__ = '2.0'
 # Code written by Piotr Dollar and Tsung-Yi Lin, 2014.
 # Licensed under the Simplified BSD License [see bsd.txt]
 
-import json
-import time
-import numpy as np
 import copy
 import itertools
-from . import mask as maskUtils
+import json
 import os
-from collections import defaultdict
 import sys
+import time
+from collections import defaultdict
+
+import numpy as np
+
+from . import mask as maskUtils
+
 PYTHON_VERSION = sys.version_info[0]
 if PYTHON_VERSION == 2:
     from urllib import urlretrieve

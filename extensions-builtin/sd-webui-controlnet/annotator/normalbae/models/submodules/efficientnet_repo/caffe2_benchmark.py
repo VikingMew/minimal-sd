@@ -6,9 +6,9 @@ It is a useful tool for reporting model FLOPS.
 Copyright 2020 Ross Wightman
 """
 import argparse
-from caffe2.python import core, workspace, model_helper
-from caffe2.proto import caffe2_pb2
 
+from caffe2.proto import caffe2_pb2
+from caffe2.python import core, model_helper, workspace
 
 parser = argparse.ArgumentParser(description='Caffe2 Model Benchmark')
 parser.add_argument('--c2-prefix', default='', type=str, metavar='NAME',

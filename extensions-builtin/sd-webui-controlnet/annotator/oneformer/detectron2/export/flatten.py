@@ -2,11 +2,14 @@
 import collections
 from dataclasses import dataclass
 from typing import Callable, List, Optional, Tuple
-import torch
-from torch import nn
 
+import torch
 from annotator.oneformer.detectron2.structures import Boxes, Instances, ROIMasks
-from annotator.oneformer.detectron2.utils.registry import _convert_target_to_string, locate
+from annotator.oneformer.detectron2.utils.registry import (
+    _convert_target_to_string,
+    locate,
+)
+from torch import nn
 
 from .torchscript_patch import patch_builtin_len
 

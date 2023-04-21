@@ -3,15 +3,15 @@ import contextlib
 import copy
 import itertools
 import logging
-import numpy as np
 import pickle
 import random
 from typing import Callable, Union
+
+import numpy as np
 import torch
 import torch.utils.data as data
-from torch.utils.data.sampler import Sampler
-
 from annotator.oneformer.detectron2.utils.serialize import PicklableWrapper
+from torch.utils.data.sampler import Sampler
 
 __all__ = ["MapDataset", "DatasetFromList", "AspectRatioGroupedDataset", "ToIterableDataset"]
 

@@ -1,8 +1,8 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 from .base_tracker import (  # noqa
+    TRACKER_HEADS_REGISTRY,
     BaseTracker,
     build_tracker_head,
-    TRACKER_HEADS_REGISTRY,
 )
 from .bbox_iou_tracker import BBoxIOUTracker  # noqa
 from .hungarian_tracker import BaseHungarianTracker  # noqa

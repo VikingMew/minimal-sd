@@ -2,7 +2,7 @@ import random
 
 import cv2
 import numpy as np
-from annotator.util import make_noise_disk, img2mask
+from annotator.util import img2mask, make_noise_disk
 
 
 class ContentShuffleDetector:

@@ -1,11 +1,13 @@
 from typing import List
 
 import torch
+from annotator.mmpkg.mmcv.runner import force_fp32
 from torch import nn as nn
 
-from annotator.mmpkg.mmcv.runner import force_fp32
-from .furthest_point_sample import (furthest_point_sample,
-                                    furthest_point_sample_with_dist)
+from .furthest_point_sample import (
+    furthest_point_sample,
+    furthest_point_sample_with_dist,
+)
 
 
 def calc_square_dist(point_feat_a, point_feat_b, norm=True):

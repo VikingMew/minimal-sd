@@ -1,6 +1,9 @@
 import os
-from modules import devices
+
 from annotator.annotator_path import models_path
+
+from modules import devices
+
 from .api import make_detectron2_model, semantic_run
 
 

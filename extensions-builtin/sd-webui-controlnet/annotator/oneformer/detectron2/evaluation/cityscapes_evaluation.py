@@ -1,16 +1,16 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 import glob
 import logging
-import numpy as np
 import os
 import tempfile
 from collections import OrderedDict
-import torch
-from PIL import Image
 
+import numpy as np
+import torch
 from annotator.oneformer.detectron2.data import MetadataCatalog
 from annotator.oneformer.detectron2.utils import comm
 from annotator.oneformer.detectron2.utils.file_io import PathManager
+from PIL import Image
 
 from .evaluator import DatasetEvaluator
 

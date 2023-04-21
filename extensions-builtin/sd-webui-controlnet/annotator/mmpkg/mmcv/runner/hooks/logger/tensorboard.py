@@ -2,6 +2,7 @@
 import os.path as osp
 
 from annotator.mmpkg.mmcv.utils import TORCH_VERSION, digit_version
+
 from ...dist_utils import master_only
 from ..hook import HOOKS
 from .base import LoggerHook

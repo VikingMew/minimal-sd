@@ -3,8 +3,9 @@
 import copy
 import io
 import logging
-import numpy as np
 from typing import List
+
+import numpy as np
 import onnx
 import onnx.optimizer
 import torch

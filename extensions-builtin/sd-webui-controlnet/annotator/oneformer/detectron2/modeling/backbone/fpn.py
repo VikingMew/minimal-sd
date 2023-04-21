@@ -1,11 +1,11 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 import math
+
 import fvcore.nn.weight_init as weight_init
 import torch
 import torch.nn.functional as F
-from torch import nn
-
 from annotator.oneformer.detectron2.layers import Conv2d, ShapeSpec, get_norm
+from torch import nn
 
 from .backbone import Backbone
 from .build import BACKBONE_REGISTRY

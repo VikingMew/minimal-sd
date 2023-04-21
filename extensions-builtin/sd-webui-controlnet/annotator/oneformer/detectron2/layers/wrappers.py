@@ -10,10 +10,10 @@ is implemented
 
 import warnings
 from typing import List, Optional
-import torch
-from torch.nn import functional as F
 
+import torch
 from annotator.oneformer.detectron2.utils.env import TORCH_VERSION
+from torch.nn import functional as F
 
 
 def shapes_to_tensor(x: List[int], device: Optional[torch.device] = None) -> torch.Tensor:

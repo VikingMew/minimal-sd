@@ -2,20 +2,27 @@
 import colorsys
 import logging
 import math
-import numpy as np
 from enum import Enum, unique
+
+import annotator.oneformer.pycocotools.mask as mask_util
 import cv2
 import matplotlib as mpl
 import matplotlib.colors as mplc
 import matplotlib.figure as mplfigure
-import annotator.oneformer.pycocotools.mask as mask_util
+import numpy as np
 import torch
+from annotator.oneformer.detectron2.data import MetadataCatalog
+from annotator.oneformer.detectron2.structures import (
+    BitMasks,
+    Boxes,
+    BoxMode,
+    Keypoints,
+    PolygonMasks,
+    RotatedBoxes,
+)
+from annotator.oneformer.detectron2.utils.file_io import PathManager
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 from PIL import Image
-
-from annotator.oneformer.detectron2.data import MetadataCatalog
-from annotator.oneformer.detectron2.structures import BitMasks, Boxes, BoxMode, Keypoints, PolygonMasks, RotatedBoxes
-from annotator.oneformer.detectron2.utils.file_io import PathManager
 
 from .colormap import random_color
 

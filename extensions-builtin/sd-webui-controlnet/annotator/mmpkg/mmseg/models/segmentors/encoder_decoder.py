@@ -1,9 +1,9 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-
 from annotator.mmpkg.mmseg.core import add_prefix
 from annotator.mmpkg.mmseg.ops import resize
+
 from .. import builder
 from ..builder import SEGMENTORS
 from .base import BaseSegmentor

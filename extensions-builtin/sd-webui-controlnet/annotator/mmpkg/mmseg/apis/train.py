@@ -5,7 +5,6 @@ import numpy as np
 import torch
 from annotator.mmpkg.mmcv.parallel import MMDataParallel, MMDistributedDataParallel
 from annotator.mmpkg.mmcv.runner import build_optimizer, build_runner
-
 from annotator.mmpkg.mmseg.core import DistEvalHook, EvalHook
 from annotator.mmpkg.mmseg.datasets import build_dataloader, build_dataset
 from annotator.mmpkg.mmseg.utils import get_root_logger

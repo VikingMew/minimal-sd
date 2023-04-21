@@ -14,13 +14,12 @@ import modules.interrogate
 
 # import modules.memmon
 import modules.styles
-from modules import (
+from modules import (  # ui_components,
     cmd_args,
     errors,
     localization,
     script_loading,
     shared_items,
-    # ui_components,
 )
 from modules.paths_internal import (
     data_path,

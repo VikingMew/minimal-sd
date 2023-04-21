@@ -1,14 +1,19 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 from typing import List
-import torch
-from torch import nn
-from torch.nn import functional as F
 
+import torch
 from annotator.oneformer.detectron2.config import configurable
-from annotator.oneformer.detectron2.layers import Conv2d, ConvTranspose2d, cat, interpolate
+from annotator.oneformer.detectron2.layers import (
+    Conv2d,
+    ConvTranspose2d,
+    cat,
+    interpolate,
+)
 from annotator.oneformer.detectron2.structures import Instances, heatmaps_to_keypoints
 from annotator.oneformer.detectron2.utils.events import get_event_storage
 from annotator.oneformer.detectron2.utils.registry import Registry
+from torch import nn
+from torch.nn import functional as F
 
 _TOTAL_SKIPPED = 0
 

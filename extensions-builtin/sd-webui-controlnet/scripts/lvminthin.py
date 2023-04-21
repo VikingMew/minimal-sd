@@ -8,7 +8,6 @@
 import cv2
 import numpy as np
 
-
 lvmin_kernels_raw = [
     np.array([
         [-1, -1, -1],

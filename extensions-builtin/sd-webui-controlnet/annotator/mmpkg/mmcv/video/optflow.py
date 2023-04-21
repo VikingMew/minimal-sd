@@ -3,7 +3,6 @@ import warnings
 
 import cv2
 import numpy as np
-
 from annotator.mmpkg.mmcv.arraymisc import dequantize, quantize
 from annotator.mmpkg.mmcv.image import imread, imwrite
 from annotator.mmpkg.mmcv.utils import is_str

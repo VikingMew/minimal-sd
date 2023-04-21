@@ -1,7 +1,6 @@
 import warnings
 
 import torch
-
 from annotator.mmpkg.mmcv.utils import digit_version
 
 

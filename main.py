@@ -1,10 +1,10 @@
 import torch
 
-import modules.txt2img
+import modules.extensions
 import modules.scripts
 import modules.sd_models
 import modules.sd_vae
-import modules.extensions
+import modules.txt2img
 
 
 def main():

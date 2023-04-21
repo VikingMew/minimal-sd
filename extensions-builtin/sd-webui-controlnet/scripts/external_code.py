@@ -1,9 +1,14 @@
 from enum import Enum
-from typing import List, Any, Optional, Union, Tuple, Dict
-import numpy as np
-from modules import scripts, processing, shared
-from scripts.global_state import update_cn_models, cn_models_names, cn_preprocessor_modules
+from typing import Any, Dict, List, Optional, Tuple, Union
 
+import numpy as np
+from scripts.global_state import (
+    cn_models_names,
+    cn_preprocessor_modules,
+    update_cn_models,
+)
+
+from modules import processing, scripts, shared
 from modules.api import api
 
 PARAM_COUNT = 13

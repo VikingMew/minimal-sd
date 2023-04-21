@@ -1,11 +1,11 @@
-import matplotlib.pyplot as plt
 import annotator.mmpkg.mmcv as mmcv
+import matplotlib.pyplot as plt
 import torch
 from annotator.mmpkg.mmcv.parallel import collate, scatter
 from annotator.mmpkg.mmcv.runner import load_checkpoint
-
 from annotator.mmpkg.mmseg.datasets.pipelines import Compose
 from annotator.mmpkg.mmseg.models import build_segmentor
+
 from modules import devices
 
 

@@ -1,5 +1,6 @@
-import torch
 import os
+
+import torch
 
 
 def load_state_dict(ckpt_path, location='cpu'):

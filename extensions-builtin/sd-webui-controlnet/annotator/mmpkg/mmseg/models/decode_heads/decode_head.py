@@ -4,9 +4,9 @@ import torch
 import torch.nn as nn
 from annotator.mmpkg.mmcv.cnn import normal_init
 from annotator.mmpkg.mmcv.runner import auto_fp16, force_fp32
-
 from annotator.mmpkg.mmseg.core import build_pixel_sampler
 from annotator.mmpkg.mmseg.ops import resize
+
 from ..builder import build_loss
 from ..losses import accuracy
 

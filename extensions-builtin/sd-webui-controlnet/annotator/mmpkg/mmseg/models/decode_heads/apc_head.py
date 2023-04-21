@@ -2,8 +2,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from annotator.mmpkg.mmcv.cnn import ConvModule
-
 from annotator.mmpkg.mmseg.ops import resize
+
 from ..builder import HEADS
 from .decode_head import BaseDecodeHead
 

@@ -13,7 +13,6 @@ import warnings
 import onnx
 from onnx import optimizer
 
-
 parser = argparse.ArgumentParser(description="Optimize ONNX model")
 
 parser.add_argument("model", help="The ONNX model")

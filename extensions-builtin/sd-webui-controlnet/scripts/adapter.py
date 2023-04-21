@@ -1,16 +1,18 @@
 
 
-import torch
-import torch.nn as nn
 import importlib
 from collections import OrderedDict
-
-from omegaconf import OmegaConf
 from copy import deepcopy
-from modules import devices, lowvram, shared, scripts
+
+import torch
+import torch.nn as nn
+from omegaconf import OmegaConf
+
+from modules import devices, lowvram, scripts, shared
+
 cond_cast_unet = getattr(devices, 'cond_cast_unet', lambda x: x)
-from ldm.modules.diffusionmodules.util import timestep_embedding
 from ldm.modules.diffusionmodules.openaimodel import UNetModel
+from ldm.modules.diffusionmodules.util import timestep_embedding
 
 
 class TorchHijackForUnet:

@@ -1,19 +1,16 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 from typing import Any, Callable, Dict, List, Optional, Union
+
 import torch.utils.data as torchdata
-
 from annotator.oneformer.detectron2.config import configurable
-
-
-from annotator.oneformer.detectron2.data.common import DatasetFromList, MapDataset
-from annotator.oneformer.detectron2.data.dataset_mapper import DatasetMapper
-from annotator.oneformer.detectron2.data.samplers import (
-    InferenceSampler,
-)
 from annotator.oneformer.detectron2.data.build import (
     get_detection_dataset_dicts,
-    trivial_batch_collator
+    trivial_batch_collator,
 )
+from annotator.oneformer.detectron2.data.common import DatasetFromList, MapDataset
+from annotator.oneformer.detectron2.data.dataset_mapper import DatasetMapper
+from annotator.oneformer.detectron2.data.samplers import InferenceSampler
+
 """
 This file contains the default logic to build a dataloader for training or testing.
 """

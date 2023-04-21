@@ -1,6 +1,8 @@
-import os, sys, cv2
+import os
+import sys
 from base64 import b64encode
 
+import cv2
 import requests
 
 

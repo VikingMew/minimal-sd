@@ -1,4 +1,5 @@
 import os
+
 import wandb
 from annotator.oneformer.detectron2.utils import comm
 from annotator.oneformer.detectron2.utils.events import EventWriter, get_event_storage

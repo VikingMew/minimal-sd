@@ -2,14 +2,14 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 
 import logging
-import numpy as np
 import os
 import tempfile
 import xml.etree.ElementTree as ET
 from collections import OrderedDict, defaultdict
 from functools import lru_cache
-import torch
 
+import numpy as np
+import torch
 from annotator.oneformer.detectron2.data import MetadataCatalog
 from annotator.oneformer.detectron2.utils import comm
 from annotator.oneformer.detectron2.utils.file_io import PathManager

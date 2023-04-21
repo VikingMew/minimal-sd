@@ -19,11 +19,11 @@ Please do your research and search ONNX and PyTorch issue tracker before asking 
 Copyright 2020 Ross Wightman
 """
 import argparse
-import torch
-import numpy as np
 
-import onnx
 import geffnet
+import numpy as np
+import onnx
+import torch
 
 parser = argparse.ArgumentParser(description='PyTorch ImageNet Validation')
 parser.add_argument('output', metavar='ONNX_FILE',
@@ -106,6 +106,7 @@ def main():
 
     if args.keep_init and args.aten_fallback:
         import caffe2.python.onnx.backend as onnx_caffe2
+
         # Caffe2 loading only works properly in newer PyTorch/ONNX combos when
         # keep_initializers_as_inputs and aten_fallback are set to True.
         print("==> Loading model into Caffe2 backend and comparing forward pass.".format(args.output))

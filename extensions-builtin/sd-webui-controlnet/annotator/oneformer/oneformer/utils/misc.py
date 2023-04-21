@@ -5,15 +5,16 @@ Misc functions, including distributed helpers.
 
 Mostly copy-paste from torchvision references.
 """
+import math
+import warnings
 from typing import List, Optional
 
 import torch
 import torch.distributed as dist
+import torch.nn.functional as F
 import torchvision
 from torch import Tensor
-import warnings
-import torch.nn.functional as F
-import math
+
 
 def inverse_sigmoid(x, eps=1e-3):
     x = x.clamp(min=0, max=1)

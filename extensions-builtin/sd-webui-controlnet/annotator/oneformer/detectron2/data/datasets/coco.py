@@ -4,16 +4,21 @@ import datetime
 import io
 import json
 import logging
-import numpy as np
 import os
 import shutil
+
 import annotator.oneformer.pycocotools.mask as mask_util
+import numpy as np
+from annotator.oneformer.detectron2.structures import (
+    Boxes,
+    BoxMode,
+    PolygonMasks,
+    RotatedBoxes,
+)
+from annotator.oneformer.detectron2.utils.file_io import PathManager
 from fvcore.common.timer import Timer
 from iopath.common.file_io import file_lock
 from PIL import Image
-
-from annotator.oneformer.detectron2.structures import Boxes, BoxMode, PolygonMasks, RotatedBoxes
-from annotator.oneformer.detectron2.utils.file_io import PathManager
 
 from .. import DatasetCatalog, MetadataCatalog
 
@@ -517,10 +522,11 @@ if __name__ == "__main__":
         "dataset_name" can be "coco_2014_minival_100", or other
         pre-registered ones
     """
+    import sys
+
+    import annotator.oneformer.detectron2.data.datasets  # noqa # add pre-defined metadata
     from annotator.oneformer.detectron2.utils.logger import setup_logger
     from annotator.oneformer.detectron2.utils.visualizer import Visualizer
-    import annotator.oneformer.detectron2.data.datasets  # noqa # add pre-defined metadata
-    import sys
 
     logger = setup_logger(name=__name__)
     assert sys.argv[3] in DatasetCatalog.list()

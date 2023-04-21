@@ -2,14 +2,19 @@
 
 import logging
 from typing import List, Optional, Tuple
+
 import torch
+from annotator.oneformer.detectron2.layers import ShapeSpec, batched_nms
+from annotator.oneformer.detectron2.structures import (
+    Boxes,
+    ImageList,
+    Instances,
+    pairwise_point_box_distance,
+)
+from annotator.oneformer.detectron2.utils.events import get_event_storage
 from fvcore.nn import sigmoid_focal_loss_jit
 from torch import nn
 from torch.nn import functional as F
-
-from annotator.oneformer.detectron2.layers import ShapeSpec, batched_nms
-from annotator.oneformer.detectron2.structures import Boxes, ImageList, Instances, pairwise_point_box_distance
-from annotator.oneformer.detectron2.utils.events import get_event_storage
 
 from ..anchor_generator import DefaultAnchorGenerator
 from ..backbone import Backbone

@@ -1,12 +1,13 @@
 import logging
+
+import cv2
 import numpy as np
-from torchvision.transforms import ToTensor, ToPILImage
 import torch
 import torch.nn.functional as F
-import cv2
+from torch.nn import Conv2d, MaxPool2d, Module, ReLU, init
+from torchvision.transforms import ToPILImage, ToTensor
 
 from . import util
-from torch.nn import Conv2d, Module, ReLU, MaxPool2d, init
 
 
 class FaceNet(Module):

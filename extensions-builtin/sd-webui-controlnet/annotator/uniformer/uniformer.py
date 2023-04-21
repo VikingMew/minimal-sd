@@ -6,22 +6,22 @@
 # --------------------------------------------------------
 
 
+from collections import OrderedDict
+from functools import partial
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.utils.checkpoint as checkpoint
-
-from functools import partial
-from collections import OrderedDict
 from timm.models.layers import DropPath, to_2tuple, trunc_normal_
 
 try:
-    from mmseg.utils import get_root_logger
     from mmseg.models.builder import BACKBONES
+    from mmseg.utils import get_root_logger
 except ImportError:
     from annotator.mmpkg.mmseg.utils import get_root_logger
     from annotator.mmpkg.mmseg.models.builder import BACKBONES
-    
+
 from annotator.uniformer.mmcv_custom import load_checkpoint
 
 

@@ -4,20 +4,18 @@
 # ------------------------------------------------------------------------------
 
 import logging
-import fvcore.nn.weight_init as weight_init
 from typing import Optional
-import torch
-from torch import nn, Tensor
-from torch.nn import functional as F
 
+import fvcore.nn.weight_init as weight_init
+import torch
 from annotator.oneformer.detectron2.config import configurable
 from annotator.oneformer.detectron2.layers import Conv2d
+from annotator.oneformer.detectron2.utils.registry import Registry
+from torch import Tensor, nn
+from torch.nn import functional as F
 
 from .position_encoding import PositionEmbeddingSine
 from .transformer import Transformer
-
-from annotator.oneformer.detectron2.utils.registry import Registry
-
 
 TRANSFORMER_DECODER_REGISTRY = Registry("TRANSFORMER_MODULE")
 TRANSFORMER_DECODER_REGISTRY.__doc__ = """

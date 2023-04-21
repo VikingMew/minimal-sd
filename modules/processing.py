@@ -25,11 +25,10 @@ import modules.sd_models as sd_models
 import modules.sd_vae as sd_vae
 import modules.shared as shared
 import modules.styles
-from modules import (
+from modules import (  # lowvram,
     devices,
     extra_networks,
     generation_parameters_copypaste,
-    # lowvram,
     masking,
     prompt_parser,
     script_callbacks,

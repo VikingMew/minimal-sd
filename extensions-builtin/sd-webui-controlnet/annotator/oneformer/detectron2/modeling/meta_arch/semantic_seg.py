@@ -1,15 +1,15 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
-import numpy as np
 from typing import Callable, Dict, Optional, Tuple, Union
-import fvcore.nn.weight_init as weight_init
-import torch
-from torch import nn
-from torch.nn import functional as F
 
+import fvcore.nn.weight_init as weight_init
+import numpy as np
+import torch
 from annotator.oneformer.detectron2.config import configurable
 from annotator.oneformer.detectron2.layers import Conv2d, ShapeSpec, get_norm
 from annotator.oneformer.detectron2.structures import ImageList
 from annotator.oneformer.detectron2.utils.registry import Registry
+from torch import nn
+from torch.nn import functional as F
 
 from ..backbone import Backbone, build_backbone
 from ..postprocessing import sem_seg_postprocess

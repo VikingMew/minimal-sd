@@ -7,10 +7,10 @@ import time
 from collections import defaultdict
 from contextlib import contextmanager
 from typing import Optional
-import torch
-from fvcore.common.history_buffer import HistoryBuffer
 
+import torch
 from annotator.oneformer.detectron2.utils.file_io import PathManager
+from fvcore.common.history_buffer import HistoryBuffer
 
 __all__ = [
     "get_event_storage",

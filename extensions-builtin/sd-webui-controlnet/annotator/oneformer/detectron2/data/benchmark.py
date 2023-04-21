@@ -1,13 +1,13 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 import logging
-import numpy as np
 from itertools import count
 from typing import List, Tuple
+
+import numpy as np
 import torch
 import tqdm
-from fvcore.common.timer import Timer
-
 from annotator.oneformer.detectron2.utils import comm
+from fvcore.common.timer import Timer
 
 from .build import build_batch_data_loader
 from .common import DatasetFromList, MapDataset

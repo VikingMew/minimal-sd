@@ -1,12 +1,13 @@
 import re
+
 import numpy as np
 
 from modules import scripts, shared
 
 try:
     from scripts import controlnet
-    from scripts.global_state import update_cn_models, cn_models_names
     from scripts.external_code import ResizeMode
+    from scripts.global_state import cn_models_names, update_cn_models
 except ImportError:
     import_error = True
 else:

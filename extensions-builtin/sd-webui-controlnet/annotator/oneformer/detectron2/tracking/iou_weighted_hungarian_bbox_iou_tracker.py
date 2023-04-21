@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # Copyright 2004-present Facebook. All Rights Reserved.
 
-import numpy as np
 from typing import List
 
+import numpy as np
 from annotator.oneformer.detectron2.config import CfgNode as CfgNode_
 from annotator.oneformer.detectron2.config import configurable
 

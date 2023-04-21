@@ -1,13 +1,13 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 from typing import List
-import torch
-from torch import nn
-from torch.autograd.function import Function
 
+import torch
 from annotator.oneformer.detectron2.config import configurable
 from annotator.oneformer.detectron2.layers import ShapeSpec
 from annotator.oneformer.detectron2.structures import Boxes, Instances, pairwise_iou
 from annotator.oneformer.detectron2.utils.events import get_event_storage
+from torch import nn
+from torch.autograd.function import Function
 
 from ..box_regression import Box2BoxTransform
 from ..matcher import Matcher

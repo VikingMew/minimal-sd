@@ -1,12 +1,13 @@
 
 import torch
 import torch.nn as nn
-from modules import devices, lowvram, shared, scripts
+
+from modules import devices, lowvram, scripts, shared
 
 cond_cast_unet = getattr(devices, 'cond_cast_unet', lambda x: x)
 
-from ldm.modules.diffusionmodules.util import timestep_embedding
 from ldm.modules.diffusionmodules.openaimodel import UNetModel
+from ldm.modules.diffusionmodules.util import timestep_embedding
 
 
 class TorchHijackForUnet:

@@ -6,12 +6,12 @@
 """
 Modules to compute the matching cost and solve the corresponding LSAP.
 """
+import numpy as np
 import torch
 import torch.nn.functional as F
 from scipy.optimize import linear_sum_assignment
 from torch import nn
 from torch.cuda.amp import autocast
-import numpy as np
 
 # from annotator.oneformer.detectron2.projects.point_rend.point_features import point_sample
 

@@ -2,9 +2,9 @@
 from __future__ import division
 
 import numpy as np
-
 from annotator.mmpkg.mmcv.image import rgb2bgr
 from annotator.mmpkg.mmcv.video import flowread
+
 from .image import imshow
 
 
