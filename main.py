@@ -26,6 +26,14 @@ logging.basicConfig(
     format="%(asctime)s %(levelname)s [%(filename)s:%(lineno)d - %(funcName)s()] %(message)s",
 )
 
+
+app_log = logging.getLogger("tornado.application")
+access_log = logging.getLogger("tornado.access")
+app_handler = logging.FileHandler("app_log.log")
+access_handler = logging.FileHandler("access_log.log")
+tornado.log.enable_pretty_logging()
+app_log.addHandler(app_handler)
+access_log.addHandler(access_handler)
 """
  {'self': <scripts.external_code.ControlNetUnit object at 0x7f3aa8c2ab50>, 'enabled': True, 'module': 'canny', 'model': 'control_canny-fp16 [e3fe7712]', 'weight': 1, 'image': {'image': array([[[0, 0, 0],
 , 'invert_image': False, 'resize_mode': 'Scale to Fit (Inner Fit)', 'rgbbgr_mode': False, 'low_vram': False, 'processor_res': 512, 'threshold_a': 100, 'threshold_b': 200, 'guidance_start': 0, 'guidance_end': 0.22, 'guess_mode': False}   
@@ -128,7 +136,7 @@ class JsonHandler(tornado.web.RequestHandler):
 class AvatarHandler(JsonHandler):
     async def post(self):
         data = self.json_args
-        positive = data["postive"]
+        positive = data["positive"]
         negative = data["negative"]
         image = run_txt_img(positive, negative)[0][0]
         buffer = io.BytesIO()
