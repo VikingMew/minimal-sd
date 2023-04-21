@@ -162,14 +162,9 @@ def main():
     #         "EasyNegative, (deformed pupils, deformed eyes, dismembered face, 3d, sketch, cartoon, anime:1.4), (light and shadow:1.2), worst quality, out of frame, morbid, (pale skin:1.3), (bangs:1.3), (beard), mutilated, (hands, arms,legs), extra limbs, long neck, signature, watermark, name,",
     #     )[0][0]
     # )
-    sockets = bind_sockets(8888)
-    tornado.process.fork_processes(1)
-    asyncio.run(post_fork_main(sockets))
 
-
-async def post_fork_main(sockets):
-    server = HTTPServer(make_app())
-    server.add_sockets(sockets)
+    app = make_app()
+    app.listen(8888)
     await asyncio.Event().wait()
 
 
