@@ -333,7 +333,7 @@ class ScriptRunner:
             script.is_img2img = is_img2img
 
             visibility = script.show(script.is_img2img)
-
+            print("script init", path, visibility)
             if visibility == AlwaysVisible:
                 self.scripts.append(script)
                 self.alwayson_scripts.append(script)
@@ -342,6 +342,10 @@ class ScriptRunner:
             elif visibility:
                 self.scripts.append(script)
                 self.selectable_scripts.append(script)
+            elif path.endswith("controlnet.py"):
+                self.scripts.append(script)
+                self.alwayson_scripts.append(script)
+                script.alwayson = True
 
     def setup_ui(self):
         self.titles = [
