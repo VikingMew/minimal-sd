@@ -149,10 +149,10 @@ class Script(scripts.Script):
         self.unloadable = global_state.cn_preprocessor_unloadable
         self.input_image = None
         self.latest_model_hash = ""
-        self.txt2img_w_slider = gr.Slider()
-        self.txt2img_h_slider = gr.Slider()
-        self.img2img_w_slider = gr.Slider()
-        self.img2img_h_slider = gr.Slider()
+        self.txt2img_w_slider = None  # gr.Slider()
+        self.txt2img_h_slider = None  # gr.Slider()
+        self.img2img_w_slider = None  # gr.Slider()
+        self.img2img_h_slider = None  # gr.Slider()
 
     def title(self):
         return "ControlNet"
