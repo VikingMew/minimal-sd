@@ -76,14 +76,14 @@ txt2img_submit_button = None
 img2img_submit_button = None
 
 
-class ToolButton(gr.Button, gr.components.FormComponent):
-    """Small button with single emoji as text, fits inside gradio forms"""
+# class ToolButton(gr.Button, gr.components.FormComponent):
+#     """Small button with single emoji as text, fits inside gradio forms"""
 
-    def __init__(self, **kwargs):
-        super().__init__(variant="tool", **kwargs)
+#     def __init__(self, **kwargs):
+#         super().__init__(variant="tool", **kwargs)
 
-    def get_block_name(self):
-        return "button"
+#     def get_block_name(self):
+#         return "button"
 
 
 def find_closest_lora_model_name(search: str):
