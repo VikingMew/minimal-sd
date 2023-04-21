@@ -9,6 +9,7 @@ import modules.scripts
 import modules.sd_models
 import modules.sd_vae
 import modules.txt2img
+import random
 
 logging.basicConfig(
     level=logging.INFO,
@@ -53,7 +54,7 @@ def run_txt_img(positive, negative):
             1,
             1,
             7,
-            1,  # seed
+            random.randint(1, 1000000),  # seed
             -1,
             0,
             0,
