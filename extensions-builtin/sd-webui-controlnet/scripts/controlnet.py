@@ -1158,6 +1158,7 @@ class Script(scripts.Script):
         args contains all values returned by components from ui()
         """
         print("cn:", args)
+        args = args[1]
         unet = p.sd_model.model.diffusion_model
         if self.latest_network is not None:
             # always restore (~0.05s)
