@@ -25,22 +25,20 @@ ARR_MASK = np.load("canny_mask.npy")
 
 def run_txt_img(positive, negative):
     # run
-    control_net_unit = (
-        modules.scripts.scripts_data[0].script_class.get_unit(
-            True,
-            "canny",
-            "control_canny-fp16 [e3fe7712]",
-            1,
-            dict(image=ARR_IMAGE, mask=ARR_MASK),
-            "Scale to Fit (Inner Fit)",
-            False,
-            512,
-            100,
-            200,
-            0,
-            0.22,
-            False,
-        ),
+    control_net_unit = modules.scripts.scripts_data[0].script_class.get_unit(
+        True,
+        "canny",
+        "control_canny-fp16 [e3fe7712]",
+        1,
+        dict(image=ARR_IMAGE, mask=ARR_MASK),
+        "Scale to Fit (Inner Fit)",
+        False,
+        512,
+        100,
+        200,
+        0,
+        0.22,
+        False,
     )
     print(
         modules.txt2img.txt2img(
