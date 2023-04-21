@@ -46,7 +46,7 @@ def main():
         [],
         args=(  # fuck
             0,
-            "<scripts.external_code.ControlNetUnit object at 0x7f27c8e3ff10>",
+            scripts.external_code.ControlNetUnit(),
             False,
             False,
             "positive",
