@@ -15,7 +15,7 @@ def main():
     modules.sd_vae.refresh_vae_list()
     modules.sd_models.load_model()
 
-    print(modules.scripts.scripts_data[0].script_class)
+    print(modules.scripts.scripts_data[0].script_class.get_unit())
 
     # run
     modules.txt2img.txt2img(

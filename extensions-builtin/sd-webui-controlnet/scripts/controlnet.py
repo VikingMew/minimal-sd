@@ -807,6 +807,7 @@ class Script(scripts.Script):
 
         return unit
 
+    @staticmethod
     def get_unit(*args):
         unit = external_code.ControlNetUnit(*args)
         return unit
