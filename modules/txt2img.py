@@ -76,7 +76,7 @@ def txt2img(
     hr_resize_x: int,
     hr_resize_y: int,
     override_settings_texts,
-    args,
+    *args,
 ):
     override_settings = create_override_settings_dict(override_settings_texts)
     """
