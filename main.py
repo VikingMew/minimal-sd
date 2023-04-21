@@ -41,60 +41,59 @@ def run_txt_img(positive, negative):
         0.22,
         False,
     )
-    return 
-        modules.txt2img.txt2img(
-            "task(1)",
-            positive,
-            negative,
-            [],
-            20,  # steps
-            16,  # samplerindex #todo
-            True,
-            False,
-            1,
-            1,
-            7,
-            random.randint(1, 1000000),  # seed
-            -1,
-            0,
-            0,
-            0,
-            False,
-            512,
-            512,
-            False,
-            0.7,
-            2,
-            " hr_upscaler: str",
-            0,
-            0,
-            0,
-            [],
-            0,
-            control_net_unit,
-            False,
-            False,
-            "positive",
-            "comma",
-            0,
-            False,
-            False,
-            "",
-            1,
-            "",
-            0,
-            "",
-            0,
-            "",
-            True,
-            False,
-            False,
-            False,
-            0,
-            None,
-            False,
-            50,
-        )
+    return modules.txt2img.txt2img(
+        "task(1)",
+        positive,
+        negative,
+        [],
+        20,  # steps
+        16,  # samplerindex #todo
+        True,
+        False,
+        1,
+        1,
+        7,
+        random.randint(1, 1000000),  # seed
+        -1,
+        0,
+        0,
+        0,
+        False,
+        512,
+        512,
+        False,
+        0.7,
+        2,
+        " hr_upscaler: str",
+        0,
+        0,
+        0,
+        [],
+        0,
+        control_net_unit,
+        False,
+        False,
+        "positive",
+        "comma",
+        0,
+        False,
+        False,
+        "",
+        1,
+        "",
+        0,
+        "",
+        0,
+        "",
+        True,
+        False,
+        False,
+        False,
+        0,
+        None,
+        False,
+        50,
+    )
     [0]
 
 
@@ -106,10 +105,12 @@ def main():
     modules.sd_vae.refresh_vae_list()
     modules.sd_models.load_model()
     modules.scripts.scripts_txt2img.initialize_scripts(is_img2img=False)
-    print(run_txt_img(
-        "realistic_portrait_female, (white background:1.5), (high detail skin:1.2),",
-        "EasyNegative, (deformed pupils, deformed eyes, dismembered face, 3d, sketch, cartoon, anime:1.4), (light and shadow:1.2), worst quality, out of frame, morbid, (pale skin:1.3), (bangs:1.3), (beard), mutilated, (hands, arms,legs), extra limbs, long neck, signature, watermark, name,",
-    ))
+    print(
+        run_txt_img(
+            "realistic_portrait_female, (white background:1.5), (high detail skin:1.2),",
+            "EasyNegative, (deformed pupils, deformed eyes, dismembered face, 3d, sketch, cartoon, anime:1.4), (light and shadow:1.2), worst quality, out of frame, morbid, (pale skin:1.3), (bangs:1.3), (beard), mutilated, (hands, arms,legs), extra limbs, long neck, signature, watermark, name,",
+        )
+    )
 
 
 if __name__ == "__main__":
