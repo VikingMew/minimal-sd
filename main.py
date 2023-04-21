@@ -110,6 +110,17 @@ def make_app():
     )
 
 
+class JsonHandler(tornado.web.RequestHandler):
+    async def get(self):
+        self.write("Hello, world")
+
+    async def prepare(self):
+        if self.request.headers.get("Content-Type", "").startswith("application/json"):
+            self.json_args = json.loads(self.request.body)
+        else:
+            self.json_args = None
+
+
 class AvatarHandler(JsonHandler):
     async def post(self):
         data = self.json_args
