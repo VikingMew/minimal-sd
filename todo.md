@@ -5,4 +5,4 @@ apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
 * cp ../stable-diffusion-webui/models/Stable-diffusion/new.safetensors ./models/Stable-diffusion/
 * cp clip
 * cp animaevae
-* git clone https://github.com/Mikubill/sd-webui-controlnet.git ./extensions/sd-webui-controlnet/
+* cp canny 
