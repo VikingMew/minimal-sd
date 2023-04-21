@@ -794,6 +794,7 @@ def process_images_inner(p: StableDiffusionProcessing) -> Processed:
         model_hijack.embedding_db.load_textual_inversion_embeddings()
 
     if p.scripts is not None:
+        print("scripts", p.scripts)
         p.scripts.process(p)
 
     infotexts = []
