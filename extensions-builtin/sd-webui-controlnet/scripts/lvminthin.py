@@ -9,16 +9,8 @@ import cv2
 import numpy as np
 
 lvmin_kernels_raw = [
-    np.array([
-        [-1, -1, -1],
-        [0, 1, 0],
-        [1, 1, 1]
-    ], dtype=np.int32),
-    np.array([
-        [0, -1, -1],
-        [1, 1, -1],
-        [0, 1, 0]
-    ], dtype=np.int32)
+    np.array([[-1, -1, -1], [0, 1, 0], [1, 1, 1]], dtype=np.int32),
+    np.array([[0, -1, -1], [1, 1, -1], [0, 1, 0]], dtype=np.int32),
 ]
 
 lvmin_kernels = []
@@ -28,16 +20,8 @@ lvmin_kernels += [np.rot90(x, k=2, axes=(0, 1)) for x in lvmin_kernels_raw]
 lvmin_kernels += [np.rot90(x, k=3, axes=(0, 1)) for x in lvmin_kernels_raw]
 
 lvmin_prunings_raw = [
-    np.array([
-        [-1, -1, -1],
-        [-1, 1, -1],
-        [0, 0, -1]
-    ], dtype=np.int32),
-    np.array([
-        [-1, -1, -1],
-        [-1, 1, -1],
-        [-1, 0, 0]
-    ], dtype=np.int32)
+    np.array([[-1, -1, -1], [-1, 1, -1], [0, 0, -1]], dtype=np.int32),
+    np.array([[-1, -1, -1], [-1, 1, -1], [-1, 0, 0]], dtype=np.int32),
 ]
 
 lvmin_prunings = []
@@ -72,4 +56,3 @@ def lvmin_thin(x):
             break
     y, _ = thin_one_time(y, lvmin_prunings)
     return y
-

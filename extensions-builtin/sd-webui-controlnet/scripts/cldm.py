@@ -4,7 +4,7 @@ from omegaconf import OmegaConf
 
 from modules import devices, shared
 
-cond_cast_unet = getattr(devices, 'cond_cast_unet', lambda x: x)
+cond_cast_unet = getattr(devices, "cond_cast_unet", lambda x: x)
 
 from ldm.modules.attention import SpatialTransformer
 from ldm.modules.diffusionmodules.openaimodel import (
@@ -30,13 +30,15 @@ class TorchHijackForUnet:
     """
 
     def __getattr__(self, item):
-        if item == 'cat':
+        if item == "cat":
             return self.cat
 
         if hasattr(torch, item):
             return getattr(torch, item)
 
-        raise AttributeError("'{}' object has no attribute '{}'".format(type(self).__name__, item))
+        raise AttributeError(
+            "'{}' object has no attribute '{}'".format(type(self).__name__, item)
+        )
 
     def cat(self, tensors, *args, **kwargs):
         if len(tensors) == 2:
@@ -56,34 +58,38 @@ def align(hint, size):
     b, c, h1, w1 = hint.shape
     h, w = size
     if h != h1 or w != w1:
-         hint = th.nn.functional.interpolate(hint, size=size, mode="nearest")
+        hint = th.nn.functional.interpolate(hint, size=size, mode="nearest")
     return hint
 
 
 def get_node_name(name, parent_name):
     if len(name) <= len(parent_name):
-        return False, ''
-    p = name[:len(parent_name)]
+        return False, ""
+    p = name[: len(parent_name)]
     if p != parent_name:
-        return False, ''
-    return True, name[len(parent_name):]
+        return False, ""
+    return True, name[len(parent_name) :]
 
 
 class PlugableControlModel(nn.Module):
     def __init__(self, state_dict, config_path, lowvram=False, base_model=None) -> None:
         super().__init__()
-        self.config = OmegaConf.load(config_path)        
-        self.control_model = ControlNet(**self.config.model.params.control_stage_config.params)
-            
+        self.config = OmegaConf.load(config_path)
+        self.control_model = ControlNet(
+            **self.config.model.params.control_stage_config.params
+        )
+
         if any([k.startswith("control_model.") for k, v in state_dict.items()]):
-            
-            is_diff_model = 'difference' in state_dict
-            transfer_ctrl_opt = shared.opts.data.get("control_net_control_transfer", False) and \
-                any([k.startswith("model.diffusion_model.") for k, v in state_dict.items()])
-                
+            is_diff_model = "difference" in state_dict
+            transfer_ctrl_opt = shared.opts.data.get(
+                "control_net_control_transfer", False
+            ) and any(
+                [k.startswith("model.diffusion_model.") for k, v in state_dict.items()]
+            )
+
             if (is_diff_model or transfer_ctrl_opt) and base_model is not None:
                 # apply transfer control - https://github.com/lllyasviel/ControlNet/blob/main/tool_transfer_control.py
-                
+
                 unet_state_dict = base_model.state_dict()
                 unet_state_dict_keys = unet_state_dict.keys()
                 final_state_dict = {}
@@ -91,9 +97,9 @@ class PlugableControlModel(nn.Module):
                 for key in state_dict.keys():
                     if not key.startswith("control_model."):
                         continue
-                    
+
                     p = state_dict[key]
-                    is_control, node_name = get_node_name(key, 'control_')
+                    is_control, node_name = get_node_name(key, "control_")
                     key_name = node_name.replace("model.", "") if is_control else key
 
                     if key_name in unet_state_dict_keys:
@@ -102,30 +108,38 @@ class PlugableControlModel(nn.Module):
                             p_new = p + unet_state_dict[key_name].clone().cpu()
                         else:
                             # transfer control by calculate offsets from (delta = p + current_unet_encoder - frozen_unet_encoder)
-                            p_new = p + unet_state_dict[key_name].clone().cpu() - state_dict["model.diffusion_model."+key_name]
+                            p_new = (
+                                p
+                                + unet_state_dict[key_name].clone().cpu()
+                                - state_dict["model.diffusion_model." + key_name]
+                            )
                         counter += 1
                     else:
                         p_new = p
                     final_state_dict[key] = p_new
-                    
-                print(f'Offset cloned: {counter} values')
+
+                print(f"Offset cloned: {counter} values")
                 state_dict = final_state_dict
-                
-            state_dict = {k.replace("control_model.", ""): v for k, v in state_dict.items() if k.startswith("control_model.")}
+
+            state_dict = {
+                k.replace("control_model.", ""): v
+                for k, v in state_dict.items()
+                if k.startswith("control_model.")
+            }
         else:
             # assume that model is done by user
             pass
-            
+
         self.control_model.load_state_dict(state_dict)
         if not lowvram:
             self.control_model.to(devices.get_device_for("controlnet"))
-            
+
     def reset(self):
         pass
-            
+
     def forward(self, *args, **kwargs):
         return self.control_model(*args, **kwargs)
-            
+
 
 class ControlNet(nn.Module):
     def __init__(
@@ -148,9 +162,9 @@ class ControlNet(nn.Module):
         use_scale_shift_norm=False,
         resblock_updown=False,
         use_new_attention_order=False,
-        use_spatial_transformer=False,    # custom transformer support
-        transformer_depth=1,              # custom transformer support
-        context_dim=None,                 # custom transformer support
+        use_spatial_transformer=False,  # custom transformer support
+        transformer_depth=1,  # custom transformer support
+        context_dim=None,  # custom transformer support
         # custom support for prediction of discrete ids into codebook of first stage vq model
         n_embed=None,
         legacy=True,
@@ -159,15 +173,22 @@ class ControlNet(nn.Module):
         disable_middle_self_attn=False,
         use_linear_in_transformer=False,
     ):
-        use_fp16 = getattr(devices, 'dtype_unet', devices.dtype) == th.float16 and not getattr(shared.cmd_opts, "no_half_controlnet", False)
-            
+        use_fp16 = getattr(
+            devices, "dtype_unet", devices.dtype
+        ) == th.float16 and not getattr(shared.cmd_opts, "no_half_controlnet", False)
+
         super().__init__()
         if use_spatial_transformer:
-            assert context_dim is not None, 'Fool!! You forgot to include the dimension of your cross-attention conditioning...'
+            assert (
+                context_dim is not None
+            ), "Fool!! You forgot to include the dimension of your cross-attention conditioning..."
 
         if context_dim is not None:
-            assert use_spatial_transformer, 'Fool!! You forgot to use the spatial transformer for your cross-attention conditioning...'
+            assert (
+                use_spatial_transformer
+            ), "Fool!! You forgot to use the spatial transformer for your cross-attention conditioning..."
             from omegaconf.listconfig import ListConfig
+
             if type(context_dim) == ListConfig:
                 context_dim = list(context_dim)
 
@@ -175,10 +196,14 @@ class ControlNet(nn.Module):
             num_heads_upsample = num_heads
 
         if num_heads == -1:
-            assert num_head_channels != -1, 'Either num_heads or num_head_channels has to be set'
+            assert (
+                num_head_channels != -1
+            ), "Either num_heads or num_head_channels has to be set"
 
         if num_head_channels == -1:
-            assert num_heads != -1, 'Either num_heads or num_head_channels has to be set'
+            assert (
+                num_heads != -1
+            ), "Either num_heads or num_head_channels has to be set"
 
         self.dims = dims
         self.image_size = image_size
@@ -188,20 +213,28 @@ class ControlNet(nn.Module):
             self.num_res_blocks = len(channel_mult) * [num_res_blocks]
         else:
             if len(num_res_blocks) != len(channel_mult):
-                raise ValueError("provide num_res_blocks either as an int (globally constant) or "
-                                 "as a list/tuple (per-level) with the same length as channel_mult")
+                raise ValueError(
+                    "provide num_res_blocks either as an int (globally constant) or "
+                    "as a list/tuple (per-level) with the same length as channel_mult"
+                )
             self.num_res_blocks = num_res_blocks
         if disable_self_attentions is not None:
             # should be a list of booleans, indicating whether to disable self-attention in TransformerBlocks or not
             assert len(disable_self_attentions) == len(channel_mult)
         if num_attention_blocks is not None:
             assert len(num_attention_blocks) == len(self.num_res_blocks)
-            assert all(map(lambda i: self.num_res_blocks[i] >= num_attention_blocks[i], range(
-                len(num_attention_blocks))))
-            print(f"Constructor of UNetModel received num_attention_blocks={num_attention_blocks}. "
-                  f"This option has LESS priority than attention_resolutions {attention_resolutions}, "
-                  f"i.e., in cases where num_attention_blocks[i] > 0 but 2**i not in attention_resolutions, "
-                  f"attention will still not be set.")
+            assert all(
+                map(
+                    lambda i: self.num_res_blocks[i] >= num_attention_blocks[i],
+                    range(len(num_attention_blocks)),
+                )
+            )
+            print(
+                f"Constructor of UNetModel received num_attention_blocks={num_attention_blocks}. "
+                f"This option has LESS priority than attention_resolutions {attention_resolutions}, "
+                f"i.e., in cases where num_attention_blocks[i] > 0 but 2**i not in attention_resolutions, "
+                f"attention will still not be set."
+            )
 
         self.attention_resolutions = attention_resolutions
         self.dropout = dropout
@@ -245,7 +278,7 @@ class ControlNet(nn.Module):
             nn.SiLU(),
             conv_nd(dims, 96, 256, 3, padding=1, stride=2),
             nn.SiLU(),
-            zero_module(conv_nd(dims, 256, model_channels, 3, padding=1))
+            zero_module(conv_nd(dims, 256, model_channels, 3, padding=1)),
         )
 
         self._feature_size = model_channels
@@ -273,14 +306,21 @@ class ControlNet(nn.Module):
                         num_heads = ch // num_head_channels
                         dim_head = num_head_channels
                     if legacy:
-                        #num_heads = 1
-                        dim_head = ch // num_heads if use_spatial_transformer else num_head_channels
+                        # num_heads = 1
+                        dim_head = (
+                            ch // num_heads
+                            if use_spatial_transformer
+                            else num_head_channels
+                        )
                     if exists(disable_self_attentions):
                         disabled_sa = disable_self_attentions[level]
                     else:
                         disabled_sa = False
 
-                    if not exists(num_attention_blocks) or nr < num_attention_blocks[level]:
+                    if (
+                        not exists(num_attention_blocks)
+                        or nr < num_attention_blocks[level]
+                    ):
                         layers.append(
                             AttentionBlock(
                                 ch,
@@ -288,10 +328,17 @@ class ControlNet(nn.Module):
                                 num_heads=num_heads,
                                 num_head_channels=dim_head,
                                 use_new_attention_order=use_new_attention_order,
-                            ) if not use_spatial_transformer else SpatialTransformer(
-                                ch, num_heads, dim_head, depth=transformer_depth, context_dim=context_dim,
-                                disable_self_attn=disabled_sa, use_linear=use_linear_in_transformer,
-                                use_checkpoint=use_checkpoint
+                            )
+                            if not use_spatial_transformer
+                            else SpatialTransformer(
+                                ch,
+                                num_heads,
+                                dim_head,
+                                depth=transformer_depth,
+                                context_dim=context_dim,
+                                disable_self_attn=disabled_sa,
+                                use_linear=use_linear_in_transformer,
+                                use_checkpoint=use_checkpoint,
                             )
                         )
                 self.input_blocks.append(TimestepEmbedSequential(*layers))
@@ -330,7 +377,7 @@ class ControlNet(nn.Module):
             num_heads = ch // num_head_channels
             dim_head = num_head_channels
         if legacy:
-            #num_heads = 1
+            # num_heads = 1
             dim_head = ch // num_heads if use_spatial_transformer else num_head_channels
         self.middle_block = TimestepEmbedSequential(
             ResBlock(
@@ -348,10 +395,17 @@ class ControlNet(nn.Module):
                 num_head_channels=dim_head,
                 use_new_attention_order=use_new_attention_order,
                 # always uses a self-attn
-            ) if not use_spatial_transformer else SpatialTransformer(
-                ch, num_heads, dim_head, depth=transformer_depth, context_dim=context_dim,
-                disable_self_attn=disable_middle_self_attn, use_linear=use_linear_in_transformer,
-                use_checkpoint=use_checkpoint
+            )
+            if not use_spatial_transformer
+            else SpatialTransformer(
+                ch,
+                num_heads,
+                dim_head,
+                depth=transformer_depth,
+                context_dim=context_dim,
+                disable_self_attn=disable_middle_self_attn,
+                use_linear=use_linear_in_transformer,
+                use_checkpoint=use_checkpoint,
             ),
             ResBlock(
                 ch,
@@ -366,8 +420,10 @@ class ControlNet(nn.Module):
         self._feature_size += ch
 
     def make_zero_conv(self, channels):
-        return TimestepEmbedSequential(zero_module(conv_nd(self.dims, channels, channels, 1, padding=0)))
-    
+        return TimestepEmbedSequential(
+            zero_module(conv_nd(self.dims, channels, channels, 1, padding=0))
+        )
+
     def align(self, hint, h, w):
         c, h1, w1 = hint.shape
         if h != h1 or w != w1:
@@ -376,12 +432,14 @@ class ControlNet(nn.Module):
         return hint
 
     def forward(self, x, hint, timesteps, context, **kwargs):
-        t_emb = cond_cast_unet(timestep_embedding(timesteps, self.model_channels, repeat_only=False))
+        t_emb = cond_cast_unet(
+            timestep_embedding(timesteps, self.model_channels, repeat_only=False)
+        )
         emb = self.time_embed(t_emb)
-            
+
         guided_hint = self.input_hint_block(cond_cast_unet(hint), emb, context)
         outs = []
-        
+
         h1, w1 = x.shape[-2:]
         guided_hint = self.align(guided_hint, h1, w1)
 

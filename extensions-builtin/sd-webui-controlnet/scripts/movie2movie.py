@@ -14,6 +14,7 @@ from modules.shared import opts
 _BASEDIR = "/controlnet-m2m"
 _BASEFILE = "animation"
 
+
 def get_all_frames(video_path):
     if video_path is None:
         return None
@@ -27,6 +28,7 @@ def get_all_frames(video_path):
             frame_list.append(frame)
         else:
             return frame_list
+
 
 def get_min_frame_num(video_list):
     min_frame_num = -1
@@ -42,8 +44,9 @@ def get_min_frame_num(video_list):
                 min_frame_num = frame_num
     return min_frame_num
 
+
 def save_gif(path, image_list, name, duration):
-    tmp_dir = path + "/tmp/" 
+    tmp_dir = path + "/tmp/"
     if os.path.isdir(tmp_dir):
         shutil.rmtree(tmp_dir)
     os.mkdir(tmp_dir)
@@ -52,11 +55,17 @@ def save_gif(path, image_list, name, duration):
 
     os.makedirs(f"{path}{_BASEDIR}", exist_ok=True)
 
-    image_list[0].save(f"{path}{_BASEDIR}/{name}.gif", save_all=True, append_images=image_list[1:], optimize=False, duration=duration, loop=0)
-    
+    image_list[0].save(
+        f"{path}{_BASEDIR}/{name}.gif",
+        save_all=True,
+        append_images=image_list[1:],
+        optimize=False,
+        duration=duration,
+        loop=0,
+    )
 
-class Script(scripts.Script):  
-    
+
+class Script(scripts.Script):
     def title(self):
         return "controlnet m2m"
 
@@ -68,18 +77,35 @@ class Script(scripts.Script):
         # for the different UI components you can use and how to create them.
         # Most UI components can return a value, such as a boolean for a checkbox.
         # The returned values are passed to the run method as parameters.
-        
+
         ctrls_group = ()
         max_models = opts.data.get("control_net_max_models_num", 1)
 
         with gr.Group():
-            with gr.Accordion("ControlNet-M2M", open = False):
+            with gr.Accordion("ControlNet-M2M", open=False):
                 with gr.Tabs():
                     for i in range(max_models):
                         with gr.Tab(f"ControlNet-{i}", open=False):
-                            ctrls_group += (gr.Video(format='mp4', source='upload', elem_id = f"video_{i}"), )
-                            ctrls_group += (gr.Checkbox(label=f"Save preprocessed", value=False, elem_id = f"save_pre_{i}"),)
-                duration = gr.Slider(label=f"Duration", value=50.0, minimum=10.0, maximum=200.0, step=10, interactive=True)
+                            ctrls_group += (
+                                gr.Video(
+                                    format="mp4", source="upload", elem_id=f"video_{i}"
+                                ),
+                            )
+                            ctrls_group += (
+                                gr.Checkbox(
+                                    label=f"Save preprocessed",
+                                    value=False,
+                                    elem_id=f"save_pre_{i}",
+                                ),
+                            )
+                duration = gr.Slider(
+                    label=f"Duration",
+                    value=50.0,
+                    minimum=10.0,
+                    maximum=200.0,
+                    step=10,
+                    interactive=True,
+                )
         ctrls_group += (duration,)
 
         return ctrls_group
@@ -88,14 +114,16 @@ class Script(scripts.Script):
         # This is where the additional processing is implemented. The parameters include
         # self, the model object "p" (a StableDiffusionProcessing class, see
         # processing.py), and the parameters returned by the ui method.
-        # Custom functions can be defined here, and additional libraries can be imported 
+        # Custom functions can be defined here, and additional libraries can be imported
         # to be used in processing. The return value should be a Processed object, which is
         # what is returned by the process_images method.
         video_num = opts.data.get("control_net_max_models_num", 1)
         arg_num = 2
-        video_list = [get_all_frames(video) for video in args[:video_num * arg_num:2]]
-        save_pre = list(args[1:video_num * arg_num:2])
-        duration, = args[video_num * arg_num:]
+        video_list = [
+            get_all_frames(video) for video in args[: video_num * arg_num : 2]
+        ]
+        save_pre = list(args[1 : video_num * arg_num : 2])
+        (duration,) = args[video_num * arg_num :]
 
         frame_num = get_min_frame_num(video_list)
         if frame_num > 0:
@@ -134,10 +162,17 @@ class Script(scripts.Script):
             for i in range(len(save_pre)):
                 if save_pre[i]:
                     # control files add -controlX.gif where X is the controlnet number
-                    save_gif(p.outpath_samples, pre_output_image_list[i], f"{filename}-control{i}", duration)
-                    proc.images.append(f"{p.outpath_samples}{_BASEDIR}/{filename}-control{i}.gif")
+                    save_gif(
+                        p.outpath_samples,
+                        pre_output_image_list[i],
+                        f"{filename}-control{i}",
+                        duration,
+                    )
+                    proc.images.append(
+                        f"{p.outpath_samples}{_BASEDIR}/{filename}-control{i}.gif"
+                    )
 
         else:
             proc = process_images(p)
-        
+
         return proc

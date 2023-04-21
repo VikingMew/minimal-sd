@@ -1,7 +1,7 @@
 import importlib
 import unittest
 
-utils = importlib.import_module('extensions.sd-webui-controlnet.tests.utils', 'utils')
+utils = importlib.import_module("extensions.sd-webui-controlnet.tests.utils", "utils")
 utils.setup_test_env()
 import requests
 
@@ -36,30 +36,39 @@ class TestTxt2ImgWorkingBase(unittest.TestCase):
             "s_tmin": 0,
             "s_noise": 1,
             "sampler_index": "Euler a",
-            "alwayson_scripts": {}
+            "alwayson_scripts": {},
         }
         self.setup_controlnet_params(setup_args)
 
     def setup_controlnet_params(self, setup_args):
-        self.simple_txt2img["alwayson_scripts"]["ControlNet"] = {
-            "args": setup_args
-        }
+        self.simple_txt2img["alwayson_scripts"]["ControlNet"] = {"args": setup_args}
 
     def assert_status_ok(self):
-        self.assertEqual(requests.post(self.url_txt2img, json=self.simple_txt2img).status_code, 200)
+        self.assertEqual(
+            requests.post(self.url_txt2img, json=self.simple_txt2img).status_code, 200
+        )
 
 
 class TestDeprecatedTxt2ImgWorking(TestTxt2ImgWorkingBase, unittest.TestCase):
     def setUp(self):
         controlnet_unit = [
-            True, "none", utils.get_model(), 1.0,
+            True,
+            "none",
+            utils.get_model(),
+            1.0,
             utils.readImage("test/test_files/img2img_basic.png"),
-            False, "Crop and Resize", False, False,
-            64, 64, 64, 0.0, 1.0, False
+            False,
+            "Crop and Resize",
+            False,
+            False,
+            64,
+            64,
+            64,
+            0.0,
+            1.0,
+            False,
         ]
-        setup_args = [
-            *controlnet_unit * getattr(self, 'units_count', 1)
-        ]
+        setup_args = [*controlnet_unit * getattr(self, "units_count", 1)]
         self.setup_route(setup_args)
 
     def test_txt2img_simple_performed(self):
@@ -97,9 +106,7 @@ class TestAlwaysonTxt2ImgWorking(TestTxt2ImgWorkingBase, unittest.TestCase):
             "guidance_end": 1.0,
             "guessmode": False,
         }
-        setup_args = [
-            [controlnet_unit] * getattr(self, 'units_count', 1)
-        ]
+        setup_args = [[controlnet_unit] * getattr(self, "units_count", 1)]
         self.setup_route(setup_args)
 
     def test_txt2img_simple_performed(self):
@@ -130,6 +137,7 @@ class TestAlwaysonTxt2ImgWorking(TestTxt2ImgWorkingBase, unittest.TestCase):
         }
 
         self.assert_status_ok()
+
 
 if __name__ == "__main__":
     unittest.main()

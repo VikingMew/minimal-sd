@@ -5,5 +5,3 @@ profile = "black"
 [tool.black]
 include = '\.pyi?$'
 
-[tool.isort]
-profile = "black"

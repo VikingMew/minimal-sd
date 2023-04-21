@@ -56,7 +56,9 @@ class InstanceSegEvaluator(COCOEvaluator):
 
         # unmap the category ids for COCO
         if hasattr(self._metadata, "thing_dataset_id_to_contiguous_id"):
-            dataset_id_to_contiguous_id = self._metadata.thing_dataset_id_to_contiguous_id
+            dataset_id_to_contiguous_id = (
+                self._metadata.thing_dataset_id_to_contiguous_id
+            )
             # all_contiguous_ids = list(dataset_id_to_contiguous_id.values())
             # num_classes = len(all_contiguous_ids)
             # assert min(all_contiguous_ids) == 0 and max(all_contiguous_ids) == num_classes - 1

@@ -11,7 +11,15 @@ from .unet import UNet
 from .vit import VisionTransformer
 
 __all__ = [
-    'ResNet', 'ResNetV1c', 'ResNetV1d', 'ResNeXt', 'HRNet',
-    'ResNeSt', 'MobileNetV2', 'UNet', 'CGNet', 'MobileNetV3',
-    'VisionTransformer'
+    "ResNet",
+    "ResNetV1c",
+    "ResNetV1d",
+    "ResNeXt",
+    "HRNet",
+    "ResNeSt",
+    "MobileNetV2",
+    "UNet",
+    "CGNet",
+    "MobileNetV3",
+    "VisionTransformer",
 ]

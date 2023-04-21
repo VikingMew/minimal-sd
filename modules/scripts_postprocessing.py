@@ -5,7 +5,6 @@ from modules import errors, shared
 # import gradio as gr
 
 
-
 class PostprocessedImage:
     def __init__(self, image):
         self.image = image

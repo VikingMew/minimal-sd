@@ -25,9 +25,26 @@ from .transforms import (
 )
 
 __all__ = [
-    'Compose', 'to_tensor', 'ToTensor', 'ImageToTensor', 'ToDataContainer',
-    'Transpose', 'Collect', 'LoadAnnotations', 'LoadImageFromFile',
-    'MultiScaleFlipAug', 'Resize', 'RandomFlip', 'Pad', 'RandomCrop',
-    'Normalize', 'SegRescale', 'PhotoMetricDistortion', 'RandomRotate',
-    'AdjustGamma', 'CLAHE', 'Rerange', 'RGB2Gray'
+    "Compose",
+    "to_tensor",
+    "ToTensor",
+    "ImageToTensor",
+    "ToDataContainer",
+    "Transpose",
+    "Collect",
+    "LoadAnnotations",
+    "LoadImageFromFile",
+    "MultiScaleFlipAug",
+    "Resize",
+    "RandomFlip",
+    "Pad",
+    "RandomCrop",
+    "Normalize",
+    "SegRescale",
+    "PhotoMetricDistortion",
+    "RandomRotate",
+    "AdjustGamma",
+    "CLAHE",
+    "Rerange",
+    "RGB2Gray",
 ]

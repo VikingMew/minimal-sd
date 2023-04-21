@@ -99,7 +99,7 @@ _COLORS = []
 
 
 def gen_color():
-    color = tuple(np.round(np.random.choice(range(256), size=3)/255, 3))
+    color = tuple(np.round(np.random.choice(range(256), size=3) / 255, 3))
     if color not in _COLORS and np.mean(color) != 0.0:
         _COLORS.append(color)
     else:

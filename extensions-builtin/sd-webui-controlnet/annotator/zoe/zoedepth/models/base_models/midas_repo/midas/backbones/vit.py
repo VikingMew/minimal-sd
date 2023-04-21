@@ -23,7 +23,7 @@ def forward_vit(pretrained, x):
 def _resize_pos_embed(self, posemb, gs_h, gs_w):
     posemb_tok, posemb_grid = (
         posemb[:, : self.start_index],
-        posemb[0, self.start_index:],
+        posemb[0, self.start_index :],
     )
 
     gs_old = int(math.sqrt(len(posemb_grid)))
@@ -89,8 +89,16 @@ def _make_vit_b16_backbone(
     start_index=1,
     start_index_readout=1,
 ):
-    pretrained = make_backbone_default(model, features, size, hooks, vit_features, use_readout, start_index,
-                                       start_index_readout)
+    pretrained = make_backbone_default(
+        model,
+        features,
+        size,
+        hooks,
+        vit_features,
+        use_readout,
+        start_index,
+        start_index_readout,
+    )
 
     # We inject this function into the VisionTransformer instances so that
     # we can use it with interpolated position embeddings without modifying the library source.
@@ -146,7 +154,9 @@ def _make_vit_b_rn50_backbone(
             get_activation(str(s + 1))
         )
     for s in range(used_number_stages, 4):
-        pretrained.model.blocks[hooks[s]].register_forward_hook(get_activation(str(s + 1)))
+        pretrained.model.blocks[hooks[s]].register_forward_hook(
+            get_activation(str(s + 1))
+        )
 
     pretrained.activations = activations
 
@@ -160,8 +170,8 @@ def _make_vit_b_rn50_backbone(
             final_layer = nn.ConvTranspose2d(
                 in_channels=features[s],
                 out_channels=features[s],
-                kernel_size=4 // (2 ** s),
-                stride=4 // (2 ** s),
+                kernel_size=4 // (2**s),
+                stride=4 // (2**s),
                 padding=0,
                 bias=True,
                 dilation=1,

@@ -28,8 +28,7 @@ class Swish(nn.Module):
 
 
 def mish(x, inplace: bool = False):
-    """Mish: A Self Regularized Non-Monotonic Neural Activation Function - https://arxiv.org/abs/1908.08681
-    """
+    """Mish: A Self Regularized Non-Monotonic Neural Activation Function - https://arxiv.org/abs/1908.08681"""
     return x.mul(F.softplus(x).tanh())
 
 
@@ -71,7 +70,7 @@ class Tanh(nn.Module):
 
 
 def hard_swish(x, inplace: bool = False):
-    inner = F.relu6(x + 3.).div_(6.)
+    inner = F.relu6(x + 3.0).div_(6.0)
     return x.mul_(inner) if inplace else x.mul(inner)
 
 
@@ -86,9 +85,9 @@ class HardSwish(nn.Module):
 
 def hard_sigmoid(x, inplace: bool = False):
     if inplace:
-        return x.add_(3.).clamp_(0., 6.).div_(6.)
+        return x.add_(3.0).clamp_(0.0, 6.0).div_(6.0)
     else:
-        return F.relu6(x + 3.) / 6.
+        return F.relu6(x + 3.0) / 6.0
 
 
 class HardSigmoid(nn.Module):
@@ -98,5 +97,3 @@ class HardSigmoid(nn.Module):
 
     def forward(self, x):
         return hard_sigmoid(x, self.inplace)
-
-

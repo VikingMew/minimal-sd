@@ -10,7 +10,7 @@ from modules.paths import models_path
 CN_MODEL_EXTS = [".pt", ".pth", ".ckpt", ".safetensors"]
 cn_models_dir = os.path.join(models_path, "ControlNet")
 cn_models_dir_old = os.path.join(scripts.basedir(), "models")
-cn_models = OrderedDict()      # "My_Lora(abcd1234)" -> C:/path/to/model.safetensors
+cn_models = OrderedDict()  # "My_Lora(abcd1234)" -> C:/path/to/model.safetensors
 cn_models_names = {}  # "my_lora" -> "My_Lora(abcd1234)"
 
 cn_preprocessor_modules = {
@@ -74,7 +74,7 @@ cn_preprocessor_unloadable = {
     "oneformer_ade20k": unload_oneformer_ade20k,
     "lineart": unload_lineart,
     "lineart_coarse": unload_lineart_coarse,
-    "lineart_anime": unload_lineart_anime
+    "lineart_anime": unload_lineart_anime,
 }
 
 preprocessor_aliases = {
@@ -97,12 +97,18 @@ preprocessor_aliases = {
     "inpaint": "inpaint_global_harmonious",
 }
 
-ui_preprocessor_keys = ['none', preprocessor_aliases['invert']]
-ui_preprocessor_keys += sorted([preprocessor_aliases.get(k, k)
-                                for k in cn_preprocessor_modules.keys()
-                                if preprocessor_aliases.get(k, k) not in ui_preprocessor_keys])
+ui_preprocessor_keys = ["none", preprocessor_aliases["invert"]]
+ui_preprocessor_keys += sorted(
+    [
+        preprocessor_aliases.get(k, k)
+        for k in cn_preprocessor_modules.keys()
+        if preprocessor_aliases.get(k, k) not in ui_preprocessor_keys
+    ]
+)
 
-reverse_preprocessor_aliases = {preprocessor_aliases[k]: k for k in preprocessor_aliases.keys()}
+reverse_preprocessor_aliases = {
+    preprocessor_aliases[k]: k for k in preprocessor_aliases.keys()
+}
 
 
 default_conf = os.path.join("models", "cldm_v15.yaml")
@@ -116,8 +122,10 @@ os.makedirs(cn_detectedmap_dir, exist_ok=True)
 
 
 def traverse_all_files(curr_path, model_list):
-    f_list = [(os.path.join(curr_path, entry.name), entry.stat())
-              for entry in os.scandir(curr_path)]
+    f_list = [
+        (os.path.join(curr_path, entry.name), entry.stat())
+        for entry in os.scandir(curr_path)
+    ]
     for f_info in f_list:
         fname, fstat = f_info
         if os.path.splitext(fname)[1] in CN_MODEL_EXTS:
@@ -132,8 +140,9 @@ def get_all_models(sort_by, filter_by, path):
     fileinfos = traverse_all_files(path, [])
     filter_by = filter_by.strip(" ")
     if len(filter_by) != 0:
-        fileinfos = [x for x in fileinfos if filter_by.lower()
-                     in os.path.basename(x[0]).lower()]
+        fileinfos = [
+            x for x in fileinfos if filter_by.lower() in os.path.basename(x[0]).lower()
+        ]
     if sort_by == "name":
         fileinfos = sorted(fileinfos, key=lambda x: os.path.basename(x[0]))
     elif sort_by == "date":
@@ -153,14 +162,19 @@ def get_all_models(sort_by, filter_by, path):
 
 def update_cn_models():
     cn_models.clear()
-    ext_dirs = (shared.opts.data.get("control_net_models_path", None), getattr(shared.cmd_opts, 'controlnet_dir', None))
-    extra_lora_paths = (extra_lora_path for extra_lora_path in ext_dirs
-                if extra_lora_path is not None and os.path.exists(extra_lora_path))
+    ext_dirs = (
+        shared.opts.data.get("control_net_models_path", None),
+        getattr(shared.cmd_opts, "controlnet_dir", None),
+    )
+    extra_lora_paths = (
+        extra_lora_path
+        for extra_lora_path in ext_dirs
+        if extra_lora_path is not None and os.path.exists(extra_lora_path)
+    )
     paths = [cn_models_dir, cn_models_dir_old, *extra_lora_paths]
 
     for path in paths:
-        sort_by = shared.opts.data.get(
-            "control_net_models_sort_models_by", "name")
+        sort_by = shared.opts.data.get("control_net_models_sort_models_by", "name")
         filter_by = shared.opts.data.get("control_net_models_name_filter", "")
         found = get_all_models(sort_by, filter_by, path)
         cn_models.update({**found, **cn_models})

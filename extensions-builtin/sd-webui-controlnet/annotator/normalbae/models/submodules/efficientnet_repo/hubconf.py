@@ -1,4 +1,4 @@
-dependencies = ['torch', 'math']
+dependencies = ["torch", "math"]
 
 from geffnet import (
     efficientnet_b0,

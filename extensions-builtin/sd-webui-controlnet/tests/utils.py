@@ -14,7 +14,7 @@ def setup_test_env():
 
 def readImage(path):
     img = cv2.imread(path)
-    retval, buffer = cv2.imencode('.jpg', img)
+    retval, buffer = cv2.imencode(".jpg", img)
     b64img = b64encode(buffer).decode("utf-8")
     return b64img
 
