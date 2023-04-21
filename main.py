@@ -1,5 +1,12 @@
+import asyncio
+import hashlib
+import io
+import json
 import logging
 import random
+import re
+import subprocess
+import time
 
 import numpy as np
 import torch
@@ -9,7 +16,6 @@ import modules.scripts
 import modules.sd_models
 import modules.sd_vae
 import modules.txt2img
-import random
 
 logging.basicConfig(
     level=logging.INFO,
@@ -96,6 +102,29 @@ def run_txt_img(positive, negative):
     )
 
 
+def make_app():
+    return tornado.web.Application(
+        [
+            (r"/avatar", AvatarHandler),
+        ]
+    )
+
+
+class AvatarHandler(JsonHandler):
+    async def post(self):
+        data = self.json_args
+        positive = data["postive"]
+        negative = data["negative"]
+        image = run_txt_img(positive, negative)[0][0]
+        buffer = io.BytesIO()
+        image.save(buffer, format="PNG")
+
+        # set the HTTP headers and write the image data to the response
+        self.set_header("Content-Type", "image/png")
+        self.set_header("Content-Length", str(len(buffer.getvalue())))
+        self.write(buffer.getvalue())
+
+
 def main():
     # load all models
     modules.extensions.list_extensions()
@@ -104,12 +133,21 @@ def main():
     modules.sd_vae.refresh_vae_list()
     modules.sd_models.load_model()
     modules.scripts.scripts_txt2img.initialize_scripts(is_img2img=False)
-    print(
-        run_txt_img(
-            "realistic_portrait_female, (white background:1.5), (high detail skin:1.2),",
-            "EasyNegative, (deformed pupils, deformed eyes, dismembered face, 3d, sketch, cartoon, anime:1.4), (light and shadow:1.2), worst quality, out of frame, morbid, (pale skin:1.3), (bangs:1.3), (beard), mutilated, (hands, arms,legs), extra limbs, long neck, signature, watermark, name,",
-        )[0][0]
-    )
+    # print(
+    #     run_txt_img(
+    #         "realistic_portrait_female, (white background:1.5), (high detail skin:1.2),",
+    #         "EasyNegative, (deformed pupils, deformed eyes, dismembered face, 3d, sketch, cartoon, anime:1.4), (light and shadow:1.2), worst quality, out of frame, morbid, (pale skin:1.3), (bangs:1.3), (beard), mutilated, (hands, arms,legs), extra limbs, long neck, signature, watermark, name,",
+    #     )[0][0]
+    # )
+    sockets = bind_sockets(8888)
+    tornado.process.fork_processes(1)
+    asyncio.run(post_fork_main(sockets))
+
+
+async def post_fork_main(sockets):
+    server = HTTPServer(make_app())
+    server.add_sockets(sockets)
+    await asyncio.Event().wait()
 
 
 if __name__ == "__main__":
