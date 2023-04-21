@@ -6,6 +6,8 @@ import modules.sd_models
 import modules.sd_vae
 import modules.txt2img
 
+import types
+
 
 def main():
     # load all models
@@ -15,6 +17,12 @@ def main():
     modules.sd_vae.refresh_vae_list()
     modules.sd_models.load_model()
 
+    def imports():
+        for name, val in globals().items():
+            if isinstance(val, types.ModuleType):
+                yield val.__name__
+
+    print(*imports())
     # run
     modules.txt2img.txt2img(
         "task(1)",
