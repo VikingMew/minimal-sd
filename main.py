@@ -1,10 +1,15 @@
 import torch
-
+import numpy as np
 import modules.extensions
 import modules.scripts
 import modules.sd_models
 import modules.sd_vae
 import modules.txt2img
+
+"""
+ {'self': <scripts.external_code.ControlNetUnit object at 0x7f3aa8c2ab50>, 'enabled': True, 'module': 'canny', 'model': 'control_canny-fp16 [e3fe7712]', 'weight': 1, 'image': {'image': array([[[0, 0, 0],
+, 'invert_image': False, 'resize_mode': 'Scale to Fit (Inner Fit)', 'rgbbgr_mode': False, 'low_vram': False, 'processor_res': 512, 'threshold_a': 100, 'threshold_b': 200, 'guidance_start': 0, 'guidance_end': 0.22, 'guess_mode': False}   
+"""
 
 
 def main():
@@ -14,9 +19,8 @@ def main():
     modules.sd_models.list_models()
     modules.sd_vae.refresh_vae_list()
     modules.sd_models.load_model()
-
-    print(modules.scripts.scripts_data[0].script_class.get_unit())
-
+    arr_image = np.load("canny_image.npy")
+    arr_mask = np.load("canny_mask.npy")
     # run
     modules.txt2img.txt2img(
         "task(1)",
@@ -48,7 +52,23 @@ def main():
         [],
         args=(  # fuck
             0,
-            scripts.external_code.ControlNetUnit(),
+            modules.scripts.scripts_data[0].script_class.get_unit(
+                enabled=True,
+                module="canny",
+                model="control_canny-fp16 [e3fe7712]",
+                weight=1,
+                image=dict(image=arr_image, mask=arr_mask),
+                invert_image=False,
+                resize_mode="Scale to Fit (Inner Fit)",
+                rgbbgr_mode=False,
+                low_vram=False,
+                processor_res=512,
+                threshold_a=100,
+                threshold_b=200,
+                guidance_start=0,
+                guidance_end=0.22,
+                guess_mode=False,
+            ),
             False,
             False,
             "positive",

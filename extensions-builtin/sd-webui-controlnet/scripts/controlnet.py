@@ -1157,6 +1157,7 @@ class Script(scripts.Script):
         You can modify the processing object (p) here, inject hooks, etc.
         args contains all values returned by components from ui()
         """
+        print("cn:", args)
         unet = p.sd_model.model.diffusion_model
         if self.latest_network is not None:
             # always restore (~0.05s)
