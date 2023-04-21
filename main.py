@@ -106,9 +106,11 @@ def main():
     modules.sd_models.load_model()
     modules.scripts.scripts_txt2img.initialize_scripts(is_img2img=False)
     print(
-        run_txt_img(
-            "realistic_portrait_female, (white background:1.5), (high detail skin:1.2),",
-            "EasyNegative, (deformed pupils, deformed eyes, dismembered face, 3d, sketch, cartoon, anime:1.4), (light and shadow:1.2), worst quality, out of frame, morbid, (pale skin:1.3), (bangs:1.3), (beard), mutilated, (hands, arms,legs), extra limbs, long neck, signature, watermark, name,",
+        type(
+            run_txt_img(
+                "realistic_portrait_female, (white background:1.5), (high detail skin:1.2),",
+                "EasyNegative, (deformed pupils, deformed eyes, dismembered face, 3d, sketch, cartoon, anime:1.4), (light and shadow:1.2), worst quality, out of frame, morbid, (pale skin:1.3), (bangs:1.3), (beard), mutilated, (hands, arms,legs), extra limbs, long neck, signature, watermark, name,",
+            )
         )
     )
 
