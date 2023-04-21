@@ -1210,6 +1210,7 @@ class Script(scripts.Script):
             self.clear_control_model_cache()
 
         # unload unused preproc
+        logging.info("enabled units %s", enabled_units)
         module_list = [unit.module for unit in enabled_units]
         for key in self.unloadable:
             if key not in module_list:
@@ -1230,7 +1231,7 @@ class Script(scripts.Script):
 
             if unit.low_vram:
                 hook_lowvram = True
-
+            logging.info("load model %s", unit.model)
             model_net = self.load_control_model(p, unet, unit.model, unit.low_vram)
             model_net.reset()
 
