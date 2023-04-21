@@ -19,6 +19,7 @@ def main():
     modules.sd_models.list_models()
     modules.sd_vae.refresh_vae_list()
     modules.sd_models.load_model()
+    modules.scripts.scripts_txt2img.initialize_scripts(is_img2img=False)
     arr_image = np.load("canny_image.npy")
     arr_mask = np.load("canny_mask.npy")
     # run
