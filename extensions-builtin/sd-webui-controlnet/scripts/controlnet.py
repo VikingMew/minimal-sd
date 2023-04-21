@@ -18,6 +18,7 @@ importlib.reload(processor)
 importlib.reload(global_state)
 importlib.reload(hook)
 importlib.reload(external_code)
+import logging
 from pathlib import Path
 
 import cv2
@@ -35,8 +36,6 @@ from modules.processing import (
     StableDiffusionProcessingImg2Img,
     StableDiffusionProcessingTxt2Img,
 )
-
-import logging
 
 # from modules.ui_components import FormRow
 
