@@ -35,7 +35,8 @@ from modules.processing import (
     StableDiffusionProcessingImg2Img,
     StableDiffusionProcessingTxt2Img,
 )
-from modules.ui_components import FormRow
+
+# from modules.ui_components import FormRow
 
 gradio_compat = True
 try:
