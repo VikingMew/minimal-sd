@@ -9,7 +9,6 @@ from scripts.global_state import (
 )
 
 from modules import processing, scripts, shared
-from modules.api import api
 
 PARAM_COUNT = 13
 

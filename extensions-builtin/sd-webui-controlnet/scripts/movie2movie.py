@@ -3,7 +3,6 @@ import os
 import shutil
 
 import cv2
-import gradio as gr
 from PIL import Image
 
 import modules.scripts as scripts
