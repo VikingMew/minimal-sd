@@ -888,7 +888,7 @@ class Script(scripts.Script):
         return model_net
 
     def build_control_model(self, p, unet, model, lowvram):
-        logging.info("build cn".format(model))
+        logging.info("build cn {}".format(model))
         model_path = global_state.cn_models.get(model, None)
         if model_path is None:
             model = find_closest_lora_model_name(model)
