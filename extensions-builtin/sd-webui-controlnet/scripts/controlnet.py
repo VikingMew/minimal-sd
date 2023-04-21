@@ -5,7 +5,6 @@ from collections import OrderedDict
 from typing import Any, Dict, Optional, Union
 
 import annotator
-import gradio as gr
 import numpy as np
 import torch
 from einops import rearrange

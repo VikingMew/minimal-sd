@@ -3,7 +3,6 @@ import sys
 from typing import Union
 
 import numpy as np
-import pydantic
 from PIL import Image
 from scripts import external_code, global_state
 
@@ -62,7 +61,7 @@ def get_deprecated_field_default(field_name: str):
     return cn_fields[field_name][-1].default
 
 
-ControlNetUnitRequest = pydantic.create_model("ControlNetUnitRequest", **cn_fields)
+# ControlNetUnitRequest = pydantic.create_model("ControlNetUnitRequest", **cn_fields)
 
 
 def create_controlnet_request_model(p_api_class):
@@ -96,12 +95,12 @@ def create_controlnet_request_model(p_api_class):
     )
 
 
-ControlNetTxt2ImgRequest = create_controlnet_request_model(
-    StableDiffusionTxt2ImgProcessingAPI
-)
-ControlNetImg2ImgRequest = create_controlnet_request_model(
-    StableDiffusionImg2ImgProcessingAPI
-)
+# ControlNetTxt2ImgRequest = create_controlnet_request_model(
+#     StableDiffusionTxt2ImgProcessingAPI
+# )
+# ControlNetImg2ImgRequest = create_controlnet_request_model(
+#     StableDiffusionImg2ImgProcessingAPI
+# )
 
 
 class ApiHijack(api.Api):
@@ -156,7 +155,7 @@ class ApiHijack(api.Api):
         return result
 
 
-api.Api = ApiHijack
+# api.Api = ApiHijack
 
 
 def nest_deprecated_cn_fields(any2img_request):
@@ -299,6 +298,6 @@ def controlnet_api(_: gr.Blocks, app: FastAPI):
 try:
     import modules.script_callbacks as script_callbacks
 
-    script_callbacks.on_app_started(controlnet_api)
+    # script_callbacks.on_app_started(controlnet_api)
 except:
     pass
