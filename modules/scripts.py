@@ -466,7 +466,7 @@ class ScriptRunner:
         return processed
 
     def process(self, p):
-        print(self.alwayson_scripts)
+        print("always on", self.alwayson_scripts)
         for script in self.alwayson_scripts:
             try:
                 script_args = p.script_args[script.args_from : script.args_to]
