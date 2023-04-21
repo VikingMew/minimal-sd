@@ -5,6 +5,12 @@ import modules.scripts
 import modules.sd_models
 import modules.sd_vae
 import modules.txt2img
+import logging
+
+logging.basicConfig(
+    level=logging.DEBUG,
+    format="%(asctime)s %(levelname)s [%(filename)s:%(lineno)d - %(funcName)s()] %(message)s",
+)
 
 """
  {'self': <scripts.external_code.ControlNetUnit object at 0x7f3aa8c2ab50>, 'enabled': True, 'module': 'canny', 'model': 'control_canny-fp16 [e3fe7712]', 'weight': 1, 'image': {'image': array([[[0, 0, 0],

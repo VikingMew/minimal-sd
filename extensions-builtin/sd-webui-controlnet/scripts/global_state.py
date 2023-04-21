@@ -1,7 +1,7 @@
 import os.path
 import stat
 from collections import OrderedDict
-
+import logging
 from scripts.processor import *
 
 from modules import scripts, sd_models, shared
