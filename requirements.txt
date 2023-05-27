@@ -6,7 +6,8 @@ font-roboto
 opencv-python
 blendmodes
 timm # ==0.4.12
-pytorch_lightning #==1.7.7
+pytorch_lightning ==1.9.5
+clip-anytorch
 omegaconf
 scikit-image
 kornia
