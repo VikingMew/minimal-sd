@@ -152,7 +152,7 @@ modules.extensions.list_extensions()
 modules.scripts.load_scripts()
 modules.sd_models.list_models()
 modules.sd_vae.refresh_vae_list()
-modules.sd_models.load_model()
+modules.sd_models.load_model(modules.sd_models.checkpoint_alisases.get("b4d453442a"))
 modules.scripts.scripts_txt2img.initialize_scripts(is_img2img=False)
 
 

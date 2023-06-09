@@ -5,6 +5,7 @@ import re
 import sys
 from os import mkdir
 from urllib import request
+import logging
 
 import ldm.modules.midas as midas
 import safetensors.torch
@@ -220,7 +221,7 @@ def select_checkpoint():
             file=sys.stderr,
         )
         exit(1)
-
+    logging.info(f"checkpoints {checkpoints_list.keys()}")
     checkpoint_info = next(iter(checkpoints_list.values()))
     if model_checkpoint is not None:
         print(
