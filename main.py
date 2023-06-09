@@ -153,7 +153,7 @@ modules.scripts.load_scripts()
 modules.sd_models.list_models()
 modules.sd_vae.refresh_vae_list()
 modules.sd_models.load_model(
-    modules.sd_models.checkpoints_list.get("protoV22.safetensors")
+    modules.sd_models.checkpoints_list.get("protoV22.safetensors [b4d453442a]")
 )
 modules.scripts.scripts_txt2img.initialize_scripts(is_img2img=False)
 
